@@ -9,13 +9,15 @@ public class GridGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int index = (int)(Random.value * labyrinths.Length);
-        var obj = Instantiate(labyrinths[index], transform);
-        var lab = obj.GetComponent<Labyrinth>();
-
-        int index2 = (int)(Random.value * labyrinths.Length);
-        var obj2 = Instantiate(labyrinths[index2], transform);
-        obj2.transform.localPosition = Vector2.down * lab.height;
+        var prevHeight = 0;
+        for (int i=0; i<10; i++)
+        {
+            int index = (int)(Random.value * labyrinths.Length);
+            var obj = Instantiate(labyrinths[index], transform);
+            var lab = obj.GetComponent<Labyrinth>();
+            obj.transform.localPosition = Vector2.down * (prevHeight);
+            prevHeight += lab.height;
+        }
 
     }
 }
