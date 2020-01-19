@@ -19,25 +19,56 @@ namespace Assets.Scripts
                 }
             matrix[(int)entry.x, (int)entry.y] = 1;
             matrix[(int)output.x, (int)output.y] = 2;
-
-            while (true)
+            int XX = 0;
+            while (XX < 1000)
             {
+                XX++;
                 entry = Randomize(entry, width, height);
                 output = Randomize(output, width, height);
                 if (matrix[(int)entry.x, (int)entry.y] == 2)
                 {
                     break;
                 }
-                matrix[(int)entry.x, (int)entry.y] = 1;
                 if (matrix[(int)output.x, (int)output.y] == 1)
                 {
                     break;
                 }
-                matrix[(int)output.x, (int)output.y] = 2;
+                if (CanBeEmpty(matrix,entry))
+                {
+                    matrix[(int)entry.x, (int)entry.y] = 1;
+                }
+                if (CanBeEmpty(matrix, output))
+                {
+                    matrix[(int)output.x, (int)output.y] = 2;
+                }
             }
 
 
             return matrix;
+        }
+
+        private static bool CanBeEmpty(int[,]  matrix, Vector2 entry)
+        {
+            int i = (int)entry.x;
+            int j = (int)entry.y;
+            int code = 0;
+            if (matrix.GetLength(0) - 1 > entry.x)
+            {
+                code += matrix[i + 1, j] > 0 ? 1 : 0;
+            }
+            if (matrix.GetLength(1) - 1 > entry.y)
+            {
+                code += matrix[i, j + 1] > 0 ? 1 : 0;
+            }
+            if (0 < entry.y)
+            {
+                code += matrix[i, j - 1] > 0 ? 1 : 0;
+            }
+            if (0 < entry.x)
+            {
+                code += matrix[i - 1, j] > 0 ? 1 : 0;
+            }
+            return code < 4 && code > 0;
         }
 
         static Vector2 Randomize(Vector2 point, int width, int height)
@@ -50,12 +81,20 @@ namespace Assets.Scripts
                     {
                         point.x += 1f;
                     }
+                    else
+                    {
+                        point.x -= 1f;
+                    }
                 }
                 else
                 {
                     if (point.x > 1)
                     {
                         point.x -= 1f;
+                    }
+                    else
+                    {
+                        point.x += 1f;
                     }
                 }
             }
@@ -67,12 +106,20 @@ namespace Assets.Scripts
                     {
                         point.y += 1f;
                     }
+                    else
+                    {
+                        point.y -= 1f;
+                    }
                 }
                 else
                 {
                     if (point.y > 1)
                     {
                         point.y -= 1f;
+                    }
+                    else
+                    {
+                        point.y += 1f;
                     }
                 }
             }
