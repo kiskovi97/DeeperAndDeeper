@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6821171835244778681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6821171835244778676}
+  - component: {fileID: 6821171835244778683}
+  - component: {fileID: 6821171835244778682}
+  m_Layer: 0
+  m_Name: Labyrinth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6821171835244778676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821171835244778681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6821171835244778683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821171835244778681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583098d2dbdb9a545a82cf50a8f160a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helper: {fileID: 6821171835244778682}
+  height: 20
+  width: 20
+--- !u!114 &6821171835244778682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821171835244778681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262e08af069a6d44e80fb2f37c056ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleTile: {fileID: 7125902236762350058, guid: 9a7eadf7f7e688942af62d9422e81244,
+    type: 3}
+  DarkTile: {fileID: 7125902236762350058, guid: cae46ca68b538564794e71ad4638be58,
+    type: 3}
+  tileUp: {fileID: 8731607875710219490, guid: 71afe58c8889fd443ba1b69298bdf35e, type: 3}
+  tileRightCorner: {fileID: 5418622078668336534, guid: c6e2c46f1d3f06c4b82892428085c26b,
+    type: 3}
+  tileRightAlmostFull: {fileID: 8675145561054279720, guid: f33760576b941954a907b4c1a63e741f,
+    type: 3}
+  tileAllAround: {fileID: 902626093209164082, guid: a593944437f888e44bd71e220bc48b0d,
+    type: 3}
+  tileUpAndDown: {fileID: 8731607875710219490, guid: c0a923a7add12a84f9991e358dda4817,
+    type: 3}
