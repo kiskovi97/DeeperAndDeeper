@@ -20,11 +20,13 @@ namespace Assets.Scripts
             matrix[(int)entry.x, (int)entry.y] = 1;
             matrix[(int)output.x, (int)output.y] = 2;
             int XX = 0;
-            while (XX < 1000)
+            while (XX < 100000)
             {
                 XX++;
-                entry = Randomize(entry, width, height);
-                output = Randomize(output, width, height);
+                var tmpEntry = entry;
+                var tmpOutput = output;
+                entry = Randomize(entry, width, height, output);
+                output = Randomize(output, width, height, entry);
                 if (matrix[(int)entry.x, (int)entry.y] == 2)
                 {
                     break;
@@ -36,10 +38,16 @@ namespace Assets.Scripts
                 if (CanBeEmpty(matrix,entry))
                 {
                     matrix[(int)entry.x, (int)entry.y] = 1;
+                } else
+                {
+                    entry = tmpEntry;
                 }
                 if (CanBeEmpty(matrix, output))
                 {
                     matrix[(int)output.x, (int)output.y] = 2;
+                } else
+                {
+                    output = tmpOutput;
                 }
             }
 
@@ -56,26 +64,52 @@ namespace Assets.Scripts
             {
                 code += matrix[i + 1, j] > 0 ? 1 : 0;
             }
+            else
+            {
+                return false;
+            }
             if (matrix.GetLength(1) - 1 > entry.y)
             {
                 code += matrix[i, j + 1] > 0 ? 1 : 0;
+            }
+            else
+            {
+                return false;
             }
             if (0 < entry.y)
             {
                 code += matrix[i, j - 1] > 0 ? 1 : 0;
             }
+            else
+            {
+                return false;
+            }
             if (0 < entry.x)
             {
                 code += matrix[i - 1, j] > 0 ? 1 : 0;
             }
+            else
+            {
+                return false;
+            }
             return code < 4 && code > 0;
         }
 
-        static Vector2 Randomize(Vector2 point, int width, int height)
+        static Vector2 Randomize(Vector2 point, int width, int height, Vector2 towards)
         {
-            if (UnityEngine.Random.value > 0.5f)
+            var delta = (point - towards).normalized;
+
+            var randomValueXOrY = (Mathf.Abs(delta.x) - Mathf.Abs(delta.y) + 1) * 0.5f;
+            var randomValueX = (delta.x + 1) * 0.5f;
+            var randomValueY = (delta.y + 1) * 0.5f;
+
+            var randomXorY = randomValueXOrY *  0.8f + 0.2f;
+            var randomY = randomValueY * 0.8f + 0.2f;
+            var randomX = randomValueX * 0.8f + 0.2f;
+
+            if (UnityEngine.Random.value > randomXorY)
             {
-                if (UnityEngine.Random.value > 0.5f)
+                if (UnityEngine.Random.value > randomX)
                 {
                     if (point.x < width - 2)
                     {
@@ -100,7 +134,7 @@ namespace Assets.Scripts
             }
             else
             {
-                if (UnityEngine.Random.value > 0.5f)
+                if (UnityEngine.Random.value > randomY)
                 {
                     if (point.y < height - 2)
                     {

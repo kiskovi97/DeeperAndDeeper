@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helper: {fileID: 6821171835244778682}
+  enemy: {fileID: 6096332106648144841, guid: 4a292ae2e7b52474fa2f47a66808ca5f, type: 3}
   height: 20
   width: 20
 --- !u!114 &6821171835244778682

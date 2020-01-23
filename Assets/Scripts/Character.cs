@@ -48,6 +48,6 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = (rb.velocity + new Vector2(horizontal * speed, rb.velocity.y)) / 2;
     }
 }

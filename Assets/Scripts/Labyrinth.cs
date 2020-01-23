@@ -4,16 +4,18 @@ using UnityEngine;
 public class Labyrinth : MonoBehaviour
 {
     public TileMapHelper helper;
+    public GameObject enemy;
 
     public int height = 10;
     public int width = 10;
 
     private int[,] matrix;
+    public float enemyProbability = 0.95f;
 
-    // Start is called before the first frame update
-    void Start()
+    public int Generate(int entry)
     {
-        matrix = LabyrinthGenerator.Generate(height, width, new Vector2(width / 2, 0), new Vector2(width / 2, height - 1));
+        int output = (int)(Random.value * width);
+        matrix = LabyrinthGenerator.Generate(height, width, new Vector2(entry, 0), new Vector2(output, height - 1));
 
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
@@ -30,9 +32,14 @@ public class Labyrinth : MonoBehaviour
                 {
                     var obj = helper.GetSimple();
                     obj.transform.localPosition = new Vector3(i - width / 2, -j);
+                    if (Random.value > enemyProbability)
+                    {
+                        var enemyObj = Instantiate(enemy, transform);
+                        enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
+                    }
                 }
             }
-
+        return output;
     }
 
     private GameObject GenerateWall(int i, int j)
@@ -55,11 +62,5 @@ public class Labyrinth : MonoBehaviour
             code += 4;
         }
         return helper.Get(code);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
