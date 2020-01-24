@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8092895947834994056}
   - component: {fileID: 1183610396335272809}
   - component: {fileID: 4771642141158951518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TileUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

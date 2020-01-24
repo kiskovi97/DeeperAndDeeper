@@ -5,16 +5,18 @@ public class Labyrinth : MonoBehaviour
 {
     public TileMapHelper helper;
     public GameObject enemy;
+    public GameObject battery;
 
     public int height = 10;
     public int width = 10;
 
     private int[,] matrix;
-    public float enemyProbability = 0.95f;
+    public float enemyProbability = 0.05f;
+    public float batteryProbability = 0.01f;
 
     public int Generate(int entry)
     {
-        int output = (int)(Random.value * width);
+        int output = (int)(Random.value * (width - 2)) + 1;
         matrix = LabyrinthGenerator.Generate(height, width, new Vector2(entry, 0), new Vector2(output, height - 1));
 
         for (int i = 0; i < width; i++)
@@ -32,10 +34,18 @@ public class Labyrinth : MonoBehaviour
                 {
                     var obj = helper.GetSimple();
                     obj.transform.localPosition = new Vector3(i - width / 2, -j);
-                    if (Random.value > enemyProbability)
+                    if (Random.value < batteryProbability)
                     {
-                        var enemyObj = Instantiate(enemy, transform);
+                        var enemyObj = Instantiate(battery, transform);
                         enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
+                    }
+                    else
+                    {
+                        if (Random.value < enemyProbability)
+                        {
+                            var enemyObj = Instantiate(enemy, transform);
+                            enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
+                        }
                     }
                 }
             }

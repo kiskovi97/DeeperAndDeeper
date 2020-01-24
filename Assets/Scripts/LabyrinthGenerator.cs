@@ -103,8 +103,8 @@ namespace Assets.Scripts
             var randomValueX = (delta.x + 1) * 0.5f;
             var randomValueY = (delta.y + 1) * 0.5f;
 
-            var randomXorY = randomValueXOrY *  0.8f + 0.2f;
-            var randomY = randomValueY * 0.8f + 0.2f;
+            var randomXorY = randomValueXOrY;
+            var randomY = randomValueY * 0.5f + 0.5f;
             var randomX = randomValueX * 0.8f + 0.2f;
 
             if (UnityEngine.Random.value > randomXorY)
