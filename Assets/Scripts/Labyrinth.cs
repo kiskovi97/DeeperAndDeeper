@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Labyrinth : MonoBehaviour
@@ -19,6 +20,8 @@ public class Labyrinth : MonoBehaviour
         int output = (int)(Random.value * (width - 2)) + 1;
         matrix = LabyrinthGenerator.Generate(height, width, new Vector2(entry, 0), new Vector2(output, height - 1));
 
+        var listOfPlaces = new List<Vector3>();
+
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
             {
@@ -34,21 +37,20 @@ public class Labyrinth : MonoBehaviour
                 {
                     var obj = helper.GetSimple();
                     obj.transform.localPosition = new Vector3(i - width / 2, -j);
-                    if (Random.value < batteryProbability)
+                    listOfPlaces.Add(new Vector3(i - width / 2, -j));
+                    if (Random.value < enemyProbability)
                     {
-                        var enemyObj = Instantiate(battery, transform);
+                        var enemyObj = Instantiate(enemy, transform);
                         enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
-                    }
-                    else
-                    {
-                        if (Random.value < enemyProbability)
-                        {
-                            var enemyObj = Instantiate(enemy, transform);
-                            enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
-                        }
                     }
                 }
             }
+
+        var batteryPlaceIndex = (int)(listOfPlaces.Count * Random.value);
+        var battaeryPlace = listOfPlaces[batteryPlaceIndex];
+        var batteryObj = Instantiate(battery, transform);
+        batteryObj.transform.localPosition = battaeryPlace;
+
         return output;
     }
 

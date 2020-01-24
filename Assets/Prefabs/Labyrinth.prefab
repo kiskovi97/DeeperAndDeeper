@@ -47,7 +47,7 @@ MonoBehaviour:
   helper: {fileID: 6821171835244778682}
   enemy: {fileID: 6096332106648144841, guid: 4a292ae2e7b52474fa2f47a66808ca5f, type: 3}
   battery: {fileID: 1245301451572745015, guid: 07e2c961590c9be4c9c8746c3e5d2263, type: 3}
-  height: 20
+  height: 50
   width: 20
   enemyProbability: 0.05
   batteryProbability: 0.01
