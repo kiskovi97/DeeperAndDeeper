@@ -47,10 +47,15 @@ MonoBehaviour:
   helper: {fileID: 6821171835244778682}
   enemy: {fileID: 6096332106648144841, guid: 4a292ae2e7b52474fa2f47a66808ca5f, type: 3}
   battery: {fileID: 1245301451572745015, guid: 07e2c961590c9be4c9c8746c3e5d2263, type: 3}
+  crystals:
+  - {fileID: 1812016920094780220, guid: a26ea29929b49944cae32735081ff424, type: 3}
+  - {fileID: 1812016920094780220, guid: 92a543dedf285bb4389bdbd480ae06fb, type: 3}
+  - {fileID: 1812016920094780220, guid: 60c7edb5729979d4a9de66065d9794fa, type: 3}
   height: 50
   width: 20
   enemyProbability: 0.05
   batteryProbability: 0.01
+  crystalProbability: 0.05
 --- !u!114 &6821171835244778682
 MonoBehaviour:
   m_ObjectHideFlags: 0

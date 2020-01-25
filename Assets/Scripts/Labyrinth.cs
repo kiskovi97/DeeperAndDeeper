@@ -7,6 +7,7 @@ public class Labyrinth : MonoBehaviour
     public TileMapHelper helper;
     public GameObject enemy;
     public GameObject battery;
+    public GameObject[] crystals;
 
     public int height = 10;
     public int width = 10;
@@ -14,6 +15,7 @@ public class Labyrinth : MonoBehaviour
     private int[,] matrix;
     public float enemyProbability = 0.05f;
     public float batteryProbability = 0.01f;
+    public float crystalProbability = 0.05f;
 
     public int Generate(int entry)
     {
@@ -43,6 +45,10 @@ public class Labyrinth : MonoBehaviour
                         var enemyObj = Instantiate(enemy, transform);
                         enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
                     }
+                    if (Random.value < crystalProbability)
+                    {
+                        GenerateCrystal(new Vector2(i - width / 2, -j));
+                    }
                 }
             }
 
@@ -52,6 +58,13 @@ public class Labyrinth : MonoBehaviour
         batteryObj.transform.localPosition = battaeryPlace;
 
         return output;
+    }
+
+    private void GenerateCrystal(Vector2 point)
+    {
+        int index = (int)(crystals.Length * Random.value);
+        var obj = Instantiate(crystals[index], transform);
+        obj.transform.localPosition = point;
     }
 
     private GameObject GenerateWall(int i, int j)

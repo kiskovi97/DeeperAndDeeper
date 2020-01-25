@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
@@ -43,9 +45,14 @@ public class Character : MonoBehaviour
         {
             LightSource.pointLightInnerRadius -= Time.deltaTime * 0.1f;
         }
+        
         if (LightSource.pointLightOuterRadius > Time.deltaTime * 0.1f)
         {
-            LightSource.pointLightOuterRadius -= Time.deltaTime * 0.1f; 
+            LightSource.pointLightOuterRadius -= Time.deltaTime * 0.1f;
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -64,11 +71,31 @@ public class Character : MonoBehaviour
         {
             animator.SetBool("moving", true);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!OnTheGround() && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
+
+    private bool OnTheGround()
+    {
+        var min = transform.position + Vector3.down * (collider.radius + 0.1f) * transform.localScale.x;
+        Debug.DrawLine(min, transform.position, Color.green);
+
+        var rightPoint = min + Vector3.right * collider.radius;
+        var leftPoint = min + Vector3.left * collider.radius;
+        Debug.DrawLine(leftPoint, rightPoint, Color.green);
+
+        var hit = Physics2D.Raycast(rightPoint, Vector2.left, collider.radius * 1.6f * transform.localScale.x);
+        if (hit.collider != null)
+        {
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+            return false;
+        }
+
+        return true;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
