@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 6084955803792331572}
   - component: {fileID: 6084955803792331570}
   - component: {fileID: 6084955803792331575}
+  - component: {fileID: -1365748882353079100}
   - component: {fileID: 6084955803792331568}
   m_Layer: 0
   m_Name: Character
@@ -144,6 +145,7 @@ MonoBehaviour:
   speed: 5
   jumpPower: 4
   LightSource: {fileID: 6084955803648665938}
+  bLight: {fileID: 0}
 --- !u!58 &6084955803792331570
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -210,6 +212,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1365748882353079100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084955803792331569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: decf3b2020cc1a14d84356a9d723ba9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &6084955803792331568
 Animator:
   serializedVersion: 3

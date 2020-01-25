@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-
+    public TextMeshProUGUI scoreText;
     public static GameState instance;
+
+    public float score = 0;
+
+    public static void AddScore(float addScore)
+    {
+        instance.score += addScore;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -31,5 +40,6 @@ public class GameState : MonoBehaviour
             Debug.Log("Quit");
             Application.Quit();
         }
+        scoreText.text = score.ToString();
     }
 }

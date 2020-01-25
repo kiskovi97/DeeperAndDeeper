@@ -50,12 +50,12 @@ MonoBehaviour:
   crystals:
   - {fileID: 1812016920094780220, guid: a26ea29929b49944cae32735081ff424, type: 3}
   - {fileID: 1812016920094780220, guid: 92a543dedf285bb4389bdbd480ae06fb, type: 3}
-  - {fileID: 1812016920094780220, guid: 60c7edb5729979d4a9de66065d9794fa, type: 3}
+  - {fileID: 1812016920094780220, guid: 92a543dedf285bb4389bdbd480ae06fb, type: 3}
   height: 50
   width: 20
   enemyProbability: 0.05
   batteryProbability: 0.01
-  crystalProbability: 0.05
+  crystalProbability: 0.02
 --- !u!114 &6821171835244778682
 MonoBehaviour:
   m_ObjectHideFlags: 0

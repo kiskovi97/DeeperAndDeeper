@@ -45,9 +45,12 @@ public class Labyrinth : MonoBehaviour
                         var enemyObj = Instantiate(enemy, transform);
                         enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
                     }
-                    if (Random.value < crystalProbability)
+                    else
                     {
-                        GenerateCrystal(new Vector2(i - width / 2, -j));
+                        if (Random.value < crystalProbability)
+                        {
+                            GenerateCrystal(new Vector2(i - width / 2, -j));
+                        }
                     }
                 }
             }

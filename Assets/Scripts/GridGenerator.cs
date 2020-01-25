@@ -1,10 +1,13 @@
 ﻿using Assets.Scripts;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
     public GameObject[] labyrinths;
+    
+    public Queue<GameObject> labs = new Queue<GameObject>();
 
     public GameObject player;
 
@@ -25,6 +28,9 @@ public class GridGenerator : MonoBehaviour
         if (player.transform.position.y - 20 < prevHeight * -1)
         {
             NewGrid();
+
+            var obj = labs.Dequeue();
+            Destroy(obj);
         }
     }
 
@@ -32,6 +38,9 @@ public class GridGenerator : MonoBehaviour
     {
         int index = (int)(Random.value * labyrinths.Length);
         var obj = Instantiate(labyrinths[index], transform);
+
+        labs.Enqueue(obj);
+
         var lab = obj.GetComponent<Labyrinth>();
         if (entryPoint == -1)
         {
