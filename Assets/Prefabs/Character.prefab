@@ -58,8 +58,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 2.55
-  m_PointLightOuterRadius: 4.03
+  m_PointLightInnerRadius: 3
+  m_PointLightOuterRadius: 4
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -142,10 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f23b6d7fd0035498a64031c93ea931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpPower: 4
   LightSource: {fileID: 6084955803648665938}
   bLight: {fileID: 0}
+  lightText: {fileID: 0}
 --- !u!58 &6084955803792331570
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -224,6 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decf3b2020cc1a14d84356a9d723ba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  jumpPower: 5
 --- !u!95 &6084955803792331568
 Animator:
   serializedVersion: 3

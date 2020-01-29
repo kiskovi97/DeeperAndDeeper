@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,9 +7,11 @@ public class Character : MonoBehaviour
 {
     private float startRadius;
     private float startOutRadius;
+    public TextMeshProUGUI scoreText;
 
     public UnityEngine.Experimental.Rendering.Universal.Light2D LightSource;
     public BackgroundLight bLight;
+    public TextMeshProUGUI lightText;
 
     public void StartLight()
     {
@@ -43,5 +46,10 @@ public class Character : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        lightText.text = (int)(LightSource.pointLightOuterRadius * 10) + "";
+
+
+        scoreText.text = GameState.score.ToString();
     }
 }
