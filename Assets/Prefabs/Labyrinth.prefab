@@ -68,7 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262e08af069a6d44e80fb2f37c056ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SimpleTile: {fileID: 7125902236762350058, guid: 9a7eadf7f7e688942af62d9422e81244,
+  SimpleTile: {fileID: 3461523445125125998, guid: 07bf5e7e275a35d498bb9793fd14cd9b,
+    type: 3}
+  GateTile: {fileID: 3461523445125125998, guid: 13fff0255e7cb354cbdad09c35473711,
     type: 3}
   DarkTile: {fileID: 7125902236762350058, guid: cae46ca68b538564794e71ad4638be58,
     type: 3}

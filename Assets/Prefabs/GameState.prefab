@@ -41,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 87059d1c209834c40a42a835f8d3e6a3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 647ef0b8a95781a4b947e7c647261849, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -176,6 +176,7 @@ MonoBehaviour:
   menu: {fileID: 9017130597301003778}
   game: {fileID: 9017130596921511558}
   soundMix: 2
+  deltaTimeQuicker: 1
   MenuScene: 0
   GameScene: 1
 --- !u!114 &9017130597274481221

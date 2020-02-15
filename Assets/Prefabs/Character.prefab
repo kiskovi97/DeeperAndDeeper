@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f23b6d7fd0035498a64031c93ea931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
   LightSource: {fileID: 6084955803648665938}
   bLight: {fileID: 0}
   lightText: {fileID: 0}
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpPower: 5
+  jumpPower: 3
 --- !u!95 &6084955803792331568
 Animator:
   serializedVersion: 3

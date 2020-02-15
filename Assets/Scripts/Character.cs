@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameState.GameOver();
         }
 
         lightText.text = (int)(LightSource.pointLightOuterRadius * 10) + "";

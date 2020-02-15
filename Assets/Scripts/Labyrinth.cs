@@ -37,7 +37,7 @@ public class Labyrinth : MonoBehaviour
                 }
                 else
                 {
-                    var obj = helper.GetSimple();
+                    var obj = j == 0 ? helper.GetGate() : helper.GetSimple();
                     obj.transform.localPosition = new Vector3(i - width / 2, -j);
                     listOfPlaces.Add(new Vector3(i - width / 2, -j));
                     if (Random.value < enemyProbability)

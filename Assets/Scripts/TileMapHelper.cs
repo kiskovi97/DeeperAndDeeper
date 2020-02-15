@@ -5,6 +5,7 @@ namespace Assets.Scripts
     public class TileMapHelper : MonoBehaviour
     {
         public GameObject SimpleTile;
+        public GameObject GateTile;
         public GameObject DarkTile;
         public GameObject tileUp;
         public GameObject tileRightCorner;
@@ -58,6 +59,11 @@ namespace Assets.Scripts
         internal GameObject GetSimple()
         {
             return Get(SimpleTile, 0);
+        }
+
+        internal GameObject GetGate()
+        {
+            return Get(GateTile, 0);
         }
 
         private GameObject Get(GameObject reference, float rotation)

@@ -105,7 +105,7 @@ namespace Assets.Scripts
 
             var randomXorY = randomValueXOrY;
             var randomY = randomValueY * 0.5f + 0.5f;
-            var randomX = randomValueX * 0.8f + 0.2f;
+            var randomX = randomValueX; // * 0.8f + 0.2f
 
             if (UnityEngine.Random.value > randomXorY)
             {

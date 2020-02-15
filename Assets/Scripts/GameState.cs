@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
     public AudioSource menu;
     public AudioSource game;
     public float soundMix = 2f;
+    public float deltaTimeQuicker = 1f;
 
     public int MenuScene = 0;
     public int GameScene = 1;
@@ -43,29 +44,42 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
+        Time.timeScale += 0.001f * deltaTimeQuicker * Time.deltaTime;
         if (Input.GetKey(KeyCode.Escape))
         {
             Quit();
         }
         if (InGame)
         {
-            if (menu.volume > 0)
+            if (menu != null)
             {
-                menu.volume -= Time.deltaTime / soundMix;
+                if (menu.volume > 0)
+                {
+                    menu.volume -= Time.deltaTime / soundMix;
+                }
             }
-            if (game.volume < 1)
+            if (game != null)
             {
-                game.volume += Time.deltaTime / soundMix;
+                if (game.volume < 1)
+                {
+                    game.volume += Time.deltaTime / soundMix;
+                }
             }
         } else
         {
-            if (game.volume > 0)
+            if (game != null)
             {
-                game.volume -= Time.deltaTime / soundMix;
+                if (game.volume > 0)
+                {
+                    game.volume -= Time.deltaTime / soundMix;
+                }
             }
-            if (menu.volume < 1)
+            if (menu != null)
             {
-                menu.volume += Time.deltaTime / soundMix;
+                if (menu.volume < 1)
+                {
+                    menu.volume += Time.deltaTime / soundMix;
+                }
             }
         }
 
@@ -79,12 +93,21 @@ public class GameState : MonoBehaviour
 
     public void LoadMenu()
     {
+        Cursor.visible = true;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(MenuScene);
         InGame = false;
     }
 
+    public static void GameOver()
+    {
+        instance.LoadGame();
+    }
+
     public void LoadGame()
     {
+        Cursor.visible = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(GameScene);
         InGame = true;
     }
