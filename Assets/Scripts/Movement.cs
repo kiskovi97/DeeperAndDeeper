@@ -4,6 +4,8 @@ public class Movement : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpPower = 5f;
+    public Joystick joystick;
+    public TMPro.TextMeshProUGUI text;
 
     private float horizontal;
     private Rigidbody2D rb;
@@ -23,7 +25,51 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
+
+#if UNITY_ANDROID
+        if (joystick != null && joystick.gameObject.activeSelf)
+        {
+            horizontal = joystick.Horizontal;
+            if (!OnTheGround() && joystick.Vertical > 0.5f)
+            {
+                rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Force);
+            }
+        }
+        else
+        {
+            text.text = Input.touchCount + " ";
+            if (Input.touchCount == 1)
+            {
+                var touch = Input.GetTouch(0);
+                var pos = touch.position;
+                text.text += pos.ToString();
+                if (pos.x > Screen.width / 2)
+                {
+                    horizontal = 2f;
+                }
+                else
+                {
+                    horizontal = -2f;
+                }
+            }
+            else
+            {
+                horizontal *= 0.5f;
+            }
+            if (Input.touchCount > 1 && !OnTheGround())
+            {
+                rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Force);
+            }
+        }
+#else
         horizontal = Input.GetAxisRaw("Horizontal");
+        if (!OnTheGround() && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+
+#endif
+
         if (horizontal > 0)
         {
             renderer.flipX = true;
@@ -39,10 +85,6 @@ public class Movement : MonoBehaviour
         else
         {
             animator.SetBool("moving", true);
-        }
-        if (!OnTheGround() && Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
 
