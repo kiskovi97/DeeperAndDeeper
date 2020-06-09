@@ -5,7 +5,6 @@ public class Movement : MonoBehaviour
     public float speed = 5f;
     public float jumpPower = 5f;
     public Joystick joystick;
-    public TMPro.TextMeshProUGUI text;
 
     private float horizontal;
     private Rigidbody2D rb;
@@ -37,12 +36,10 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            text.text = Input.touchCount + " ";
             if (Input.touchCount == 1)
             {
                 var touch = Input.GetTouch(0);
                 var pos = touch.position;
-                text.text += pos.ToString();
                 if (pos.x > Screen.width / 2)
                 {
                     horizontal = 2f;

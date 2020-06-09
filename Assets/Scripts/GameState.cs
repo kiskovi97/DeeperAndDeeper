@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,8 +15,10 @@ public class GameState : MonoBehaviour
 
     public int MenuScene = 0;
     public int GameScene = 1;
+    public int GameOverScene = 2;
 
     public static float score = 0;
+    public static float deltaTime = 0;
 
     public static void AddScore(float addScore)
     {
@@ -37,6 +40,9 @@ public class GameState : MonoBehaviour
                 DontDestroyOnLoad(this.gameObject);
                 instance = this.gameObject.GetComponent<GameState>();
             }
+        } else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -85,30 +91,39 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void Quit()
+    public static void Quit()
     {
         Debug.Log("Quit");
         Application.Quit();
     }
 
-    public void LoadMenu()
+    public static void LoadMenu()
     {
         Cursor.visible = true;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(MenuScene);
-        InGame = false;
+        SceneManager.LoadScene(instance.MenuScene);
+        instance.InGame = false;
     }
 
     public static void GameOver()
     {
-        instance.LoadGame();
+        LoadGameOver();
     }
 
-    public void LoadGame()
+    private static void LoadGameOver()
     {
         Cursor.visible = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(GameScene);
-        InGame = true;
+        SceneManager.LoadScene(instance.GameOverScene);
+        instance.InGame = false;
+    }
+
+    public static void LoadGame()
+    {
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        score = 0;
+        SceneManager.LoadScene(instance.GameScene);
+        instance.InGame = true;
     }
 }
