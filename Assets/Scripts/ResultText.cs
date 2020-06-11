@@ -16,6 +16,6 @@ public class ResultText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = GameState.score + " in time: " + GameState.deltaTime;
+        scoreText.text = "Score: " + GameState.score.ToString("#0") + "\nTime: " + GameState.deltaTime.ToString("#0.00");
     }
 }
