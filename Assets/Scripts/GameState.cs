@@ -13,10 +13,10 @@ public class GameState : MonoBehaviour
     public float soundMix = 2f;
     public float deltaTimeQuicker = 1f;
 
-    public int MenuScene = 0;
-    public int GameScene = 1;
-    public int GameOverScene = 2;
-    public int TutorialScene = 3;
+    public static int MenuScene = 0;
+    public static int GameScene = 1;
+    public static int GameOverScene = 2;
+    public static int TutorialScene = 3;
 
     public static float score = 0;
     public static float deltaTime = 0;
@@ -102,7 +102,7 @@ public class GameState : MonoBehaviour
     {
         Cursor.visible = true;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(instance.MenuScene);
+        SceneManager.LoadScene(MenuScene);
         instance.InGame = false;
     }
 
@@ -115,7 +115,7 @@ public class GameState : MonoBehaviour
     {
         Cursor.visible = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(instance.GameOverScene);
+        SceneManager.LoadScene(GameOverScene);
         instance.InGame = false;
     }
 
@@ -124,7 +124,7 @@ public class GameState : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1f;
         score = 0;
-        SceneManager.LoadScene(instance.TutorialScene);
+        SceneManager.LoadScene(TutorialScene);
         instance.InGame = true;
     }
 
@@ -133,7 +133,7 @@ public class GameState : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1f;
         score = 0;
-        SceneManager.LoadScene(instance.GameScene);
+        SceneManager.LoadScene(GameScene);
         instance.InGame = true;
     }
 }
