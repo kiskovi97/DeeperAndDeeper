@@ -29,8 +29,14 @@ public abstract class Collactable : MonoBehaviour
             CinemachineShake.ShakeCamera(3f, 0.3f);
             isDestroying = true;
             timer = 1f;
-            explosion?.Play();
-            sprite.enabled = false;
+            if (explosion != null)
+            {
+                explosion.Play();
+            }
+            if (sprite != null)
+            {
+                sprite.enabled = false;
+            }
         }
     }
 

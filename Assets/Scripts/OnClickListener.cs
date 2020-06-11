@@ -21,6 +21,6 @@ public class OnClickListener : MonoBehaviour
 
     public void LoadGame()
     {
-        GameState.LoadGame();
+        GameState.LoadTutorial();
     }
 }

@@ -16,6 +16,7 @@ public class GameState : MonoBehaviour
     public int MenuScene = 0;
     public int GameScene = 1;
     public int GameOverScene = 2;
+    public int TutorialScene = 3;
 
     public static float score = 0;
     public static float deltaTime = 0;
@@ -116,6 +117,15 @@ public class GameState : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(instance.GameOverScene);
         instance.InGame = false;
+    }
+
+    public static void LoadTutorial()
+    {
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        score = 0;
+        SceneManager.LoadScene(instance.TutorialScene);
+        instance.InGame = true;
     }
 
     public static void LoadGame()

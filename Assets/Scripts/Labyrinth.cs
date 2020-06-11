@@ -12,16 +12,42 @@ public class Labyrinth : MonoBehaviour
     public int height = 10;
     public int width = 10;
 
+    public Texture2D texture;
+
     private int[,] matrix;
     public float enemyProbability = 0.05f;
     public float batteryProbability = 0.01f;
     public float crystalProbability = 0.05f;
+
+    public bool PreMade = false;
+
+    private void Start()
+    {
+        if (PreMade)
+        {
+            matrix = new int[height, width];
+            for (int i = 0; i < width; i++)
+                for (int j = 0; j < height; j++)
+                {
+                    var color = texture.GetPixel(i, j);
+                    matrix[i, j] = (int)(color.grayscale / 10f);
+                }
+            CreateTiles();
+        }
+    }
 
     public int Generate(int entry)
     {
         int output = (int)(Random.value * (width - 2)) + 1;
         matrix = LabyrinthGenerator.Generate(height, width, new Vector2(entry, 0), new Vector2(output, height - 1));
 
+        CreateTiles();
+
+        return output;
+    }
+
+    private void CreateTiles()
+    {
         var listOfPlaces = new List<Vector3>();
 
         for (int i = 0; i < width; i++)
@@ -59,8 +85,6 @@ public class Labyrinth : MonoBehaviour
         var battaeryPlace = listOfPlaces[batteryPlaceIndex];
         var batteryObj = Instantiate(battery, transform);
         batteryObj.transform.localPosition = battaeryPlace;
-
-        return output;
     }
 
     private void GenerateCrystal(Vector2 point)
