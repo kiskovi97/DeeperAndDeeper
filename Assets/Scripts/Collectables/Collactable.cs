@@ -16,6 +16,7 @@ public abstract class Collactable : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(clip, transform.position);
             }
+            CinemachineShake.ShakeCamera(3f, 0.3f);
             Destroy(gameObject, 0.1f);
         }
     }
