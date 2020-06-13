@@ -25,8 +25,8 @@ public class ResultText : MonoBehaviour
             maxScore = GameState.score;
         }
 
-        scoreText.text = "Score: " + GameState.score.ToString("#0") + "/" + maxScore.ToString("#0");
-        scoreText.text += "\nTime: " + GameState.deltaTime.ToString("#0") + "/" + maxTime.ToString("#0");
+        scoreText.text = "Actual score: " + GameState.score.ToString("#0") + "\nTop score: " + maxScore.ToString("#0");
+        scoreText.text += "\nActual time: " + GameState.deltaTime.ToString("#0") + "\nTop time: " + maxTime.ToString("#0");
 
         PlayerPrefs.SetFloat("MaxScore", maxScore);
         PlayerPrefs.SetFloat("MaxTime", maxTime);

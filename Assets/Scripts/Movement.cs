@@ -1,16 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Movement : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpPower = 5f;
-    public Joystick joystick;
+    public Transform lowPoint;
 
     private float horizontal;
     private Rigidbody2D rb;
     private new SpriteRenderer renderer;
     private Animator animator;
-    private new CircleCollider2D collider;
+
+    public TextMeshProUGUI text;
+
+    private bool jump = false;
 
     private static readonly int EnvironmentLayer = 8;
 
@@ -20,52 +26,67 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        collider = GetComponent<CircleCollider2D>();
     }
     private void Update()
     {
-
+        if (IsPointerOverUIObject()) return;
+        var horizontalPrev = 0f;
+        var jumpPrev = false;
 #if UNITY_ANDROID
-        if (joystick != null && joystick.gameObject.activeSelf)
+        if (GameState.RotationMovement)
         {
-            horizontal = joystick.Horizontal;
-            if (!OnTheGround() && joystick.Vertical > 0.5f)
+            if (Input.touchCount > 0)
             {
-                rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Force);
+                jumpPrev = true;
             }
+            Vector3 tilt = Input.acceleration;
+            horizontalPrev = tilt.x * 4f;
         }
         else
         {
-            if (Input.touchCount == 1)
+            var left = false;
+            var right = false;
+            for (int i = 0; i < Input.touchCount; i++)
             {
-                var touch = Input.GetTouch(0);
+                var touch = Input.GetTouch(i);
+
                 var pos = touch.position;
                 if (pos.x > Screen.width / 2)
                 {
-                    horizontal = 2f;
+                    right = true;
+                    horizontalPrev += 2;
                 }
                 else
                 {
-                    horizontal = -2f;
+                    left = true;
+                    horizontalPrev += -2;
                 }
             }
-            else
+            jumpPrev = left && right;
+        }
+
+
+#endif
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.A))
+        {
+            horizontalPrev += -2;
+            if (Input.GetKey(KeyCode.D))
             {
-                horizontal *= 0.5f;
-            }
-            if (Input.touchCount > 1 && !OnTheGround())
-            {
-                rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Force);
+                jumpPrev = true;
             }
         }
-#else
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if (!OnTheGround() && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            horizontalPrev += 2;
         }
 
 #endif
+        horizontal = horizontalPrev;
+        if (jumpPrev && !OnTheGround())
+        {
+            jump = true;
+        }
 
         if (horizontal > 0)
         {
@@ -87,14 +108,14 @@ public class Movement : MonoBehaviour
 
     private bool OnTheGround()
     {
-        var min = transform.position + Vector3.down * (collider.radius + 0.1f) * transform.localScale.x;
+        var min = lowPoint.position;
         Debug.DrawLine(min, transform.position, Color.green);
 
-        var rightPoint = min + Vector3.right * collider.radius;
-        var leftPoint = min + Vector3.left * collider.radius;
+        var rightPoint = min + Vector3.right * 0.1f;
+        var leftPoint = min + Vector3.left * 0.1f;
         Debug.DrawLine(leftPoint, rightPoint, Color.green);
 
-        var hit = Physics2D.Raycast(rightPoint, Vector2.left, collider.radius * 1.6f * transform.localScale.x);
+        var hit = Physics2D.Raycast(rightPoint, Vector2.left, 0.2f);
         if (hit.collider != null)
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
@@ -107,41 +128,21 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (jump)
+        {
+            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            jump = false;
+        }
+
         // Get the velocity
         Vector2 horizontalMove = (rb.velocity + new Vector2(horizontal * speed, rb.velocity.y)) / 2;
 
         rb.velocity = horizontalMove;
-
-        FinalCollisionCheck();
     }
 
-    private void FinalCollisionCheck()
+    private bool IsPointerOverUIObject()
     {
-        // Get the velocity
-        Vector2 moveDirection = rb.velocity * Time.fixedDeltaTime * 2.1f;
-        Vector2 position = transform.position;
-        var distance = Time.fixedDeltaTime * 10f + collider.radius * transform.localScale.x;
-        // Check if the body's current velocity will result in a collision
-        var hits = Physics2D.RaycastAll(position, moveDirection.normalized, distance);
-        foreach (var hit in hits)
-        {
-            if (hit.collider.gameObject.layer.Equals(EnvironmentLayer))
-            {
-                Debug.DrawLine(hit.transform.position, transform.position, Color.red);
-                // If so, stop the movement
-                rb.velocity = new Vector3(0, rb.velocity.y, 0);
-            }
-        }
-
-        hits = Physics2D.RaycastAll(position, (moveDirection.normalized + Vector2.up) * 0.5f, distance);
-        foreach (var hit in hits)
-        {
-            if (hit.collider.gameObject.layer.Equals(EnvironmentLayer))
-            {
-                Debug.DrawLine(hit.transform.position, transform.position, Color.red);
-                // If so, stop the movement
-                rb.velocity = new Vector3(0, rb.velocity.y, 0);
-            }
-        }
+        return (EventSystem.current.IsPointerOverGameObject() || EventSystem.current.currentSelectedGameObject != null);
     }
 }

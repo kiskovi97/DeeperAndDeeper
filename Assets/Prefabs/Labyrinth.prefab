@@ -53,9 +53,11 @@ MonoBehaviour:
   - {fileID: 1812016920094780220, guid: 92a543dedf285bb4389bdbd480ae06fb, type: 3}
   height: 50
   width: 20
+  texture: {fileID: 0}
   enemyProbability: 0.05
   batteryProbability: 0.01
   crystalProbability: 0.02
+  PreMade: 0
 --- !u!114 &6821171835244778682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,3 +85,7 @@ MonoBehaviour:
     type: 3}
   tileUpAndDown: {fileID: 8731607875710219490, guid: c0a923a7add12a84f9991e358dda4817,
     type: 3}
+  skulls:
+  - {fileID: 8862442230784230273, guid: ee7d6ab0084cfe043ae87f5df850d6cd, type: 3}
+  - {fileID: 2307231035443945151, guid: 59a1f605d29572747840a7269681427d, type: 3}
+  - {fileID: 1976963483181574848, guid: 2d7276418d5d0af41b060ef8771d3c92, type: 3}

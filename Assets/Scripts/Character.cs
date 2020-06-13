@@ -14,6 +14,8 @@ public class Character : MonoBehaviour
     public TextMeshProUGUI lightText;
     public float start;
 
+    public bool Immortal = false;
+
     public void StartLight()
     {
         bLight.StartTimer();
@@ -35,24 +37,27 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        if (LightSource.pointLightInnerRadius > Time.deltaTime * 0.1f)
+        if (!Immortal)
         {
-            LightSource.pointLightInnerRadius -= Time.deltaTime * 0.1f;
-        }
-        
-        if (LightSource.pointLightOuterRadius > Time.deltaTime * 0.1f)
-        {
-            LightSource.pointLightOuterRadius -= Time.deltaTime * 0.1f;
-        }
-        else
-        {
-            GameState.deltaTime = Time.time - start;
-            GameState.GameOver();
-        }
+            if (LightSource.pointLightInnerRadius > Time.deltaTime * 0.1f)
+            {
+                LightSource.pointLightInnerRadius -= Time.deltaTime * 0.1f;
+            }
 
-        lightText.text = (int)(LightSource.pointLightOuterRadius * 10) + "";
+            if (LightSource.pointLightOuterRadius > Time.deltaTime * 0.1f)
+            {
+                LightSource.pointLightOuterRadius -= Time.deltaTime * 0.1f;
+            }
+            else
+            {
+                GameState.deltaTime = Time.time - start;
+                GameState.GameOver();
+            }
+        }
+        if (lightText != null)
+            lightText.text = (int)(LightSource.pointLightOuterRadius * 10) + "";
 
-
-        scoreText.text = GameState.score.ToString();
+        if (scoreText != null)
+            scoreText.text = GameState.score.ToString();
     }
 }

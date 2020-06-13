@@ -12,6 +12,7 @@ namespace Assets.Scripts
         public GameObject tileRightAlmostFull;
         public GameObject tileAllAround;
         public GameObject tileUpAndDown;
+        public GameObject[] skulls;
 
         public GameObject Get(int code)
         {
@@ -52,6 +53,10 @@ namespace Assets.Scripts
                 case 15:
                     return Get(tileAllAround, 0);
                 default:
+                    if (Random.value < 0.01f)
+                    {
+                        return Get(skulls[(int)(Random.value * skulls.Length)], Random.value * 360, 0.5f);
+                    }
                     return Get(DarkTile, 0);
             }
         }
@@ -66,11 +71,11 @@ namespace Assets.Scripts
             return Get(GateTile, 0);
         }
 
-        private GameObject Get(GameObject reference, float rotation)
+        private GameObject Get(GameObject reference, float rotation, float scale = 1f)
         {
             var obj = Instantiate(reference, transform);
             obj.transform.Rotate(new Vector3(0, 0, rotation));
-            obj.transform.localScale = new Vector3(2.5f, 2.5f, 1f);
+            obj.transform.localScale = new Vector3(2.5f * scale, 2.5f * scale, 1f);
             return obj;
         }
     }

@@ -1,9 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OnClickListener : MonoBehaviour
 {
+    public Dropdown Dropdown;
+
+    public GameObject Settings;
+
+    public PauseButton button;
+
+    private void Awake()
+    {
+        var selected = PlayerPrefs.GetInt("RotationMovement");
+        GameState.RotationMovement = selected != 0;
+    }
+
     public void Quit()
     {
         GameState.Quit();
@@ -22,5 +35,33 @@ public class OnClickListener : MonoBehaviour
     public void LoadGame()
     {
         GameState.LoadTutorial();
+    }
+
+    private float timeScale = 1f;
+
+    public void SetSettings()
+    {
+        if (Settings.activeSelf)
+        {
+            Settings.SetActive(false);
+            Time.timeScale = timeScale;
+            if (button != null) button.SetPause();
+
+        } else
+        {
+            timeScale = Time.timeScale;
+            Time.timeScale = 0f;
+            Settings.SetActive(true);
+            Dropdown.value = GameState.RotationMovement ? 1 : 0;
+            if (button != null) button.SetPlay();
+        }
+    }
+
+    public void Save()
+    {
+        var selected = Dropdown.value;
+        GameState.RotationMovement = selected != 0;
+        PlayerPrefs.SetInt("RotationMovement", selected);
+        SetSettings();
     }
 }
