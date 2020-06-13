@@ -50,10 +50,12 @@ public class Movement : MonoBehaviour
                 var pos = touch.position;
                 if (pos.x > Screen.width / 2)
                 {
+                    right = true;
                     horizontalPrev += 2;
                 }
                 else
                 {
+                    left = true;
                     horizontalPrev += -2;
                 }
             }
