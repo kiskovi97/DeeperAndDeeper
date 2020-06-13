@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -187,18 +187,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &261487609 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
-    type: 3}
-  m_PrefabInstance: {fileID: 1477487735}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &326247510
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: -0.2000004, z: -10}
+  m_LocalPosition: {x: -0.00000035762787, y: -0.2000004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 585342683}
@@ -743,7 +731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &740869808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1404,7 +1392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565193577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: -0.2000004, z: -10}
+  m_LocalPosition: {x: -0.00000035762787, y: -0.2000004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 796055037}
@@ -1544,9 +1532,6 @@ MonoBehaviour:
   game: {fileID: 0}
   soundMix: 2
   deltaTimeQuicker: 1
-  MenuScene: 0
-  GameScene: 1
-  GameOverScene: 2
 --- !u!1 &1997688968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,26 +1625,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1365748882353079100, guid: b524632453d0ea4449d0afd6cad67c5d,
-        type: 3}
-      propertyPath: joystick
-      value: 
-      objectReference: {fileID: 261487609}
-    - target: {fileID: -1365748882353079100, guid: b524632453d0ea4449d0afd6cad67c5d,
-        type: 3}
-      propertyPath: jumpPower
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: -1365748882353079100, guid: b524632453d0ea4449d0afd6cad67c5d,
-        type: 3}
-      propertyPath: text
-      value: 
-      objectReference: {fileID: 740869809}
-    - target: {fileID: -1365748882353079100, guid: b524632453d0ea4449d0afd6cad67c5d,
-        type: 3}
-      propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6084955803648665938, guid: b524632453d0ea4449d0afd6cad67c5d,
         type: 3}
       propertyPath: m_Intensity
@@ -1748,7 +1713,7 @@ PrefabInstance:
     - target: {fileID: 6084955803792331573, guid: b524632453d0ea4449d0afd6cad67c5d,
         type: 3}
       propertyPath: m_Mass
-      value: 0.38484508
+      value: 0.2716395
       objectReference: {fileID: 0}
     - target: {fileID: 6084955803792331573, guid: b524632453d0ea4449d0afd6cad67c5d,
         type: 3}
