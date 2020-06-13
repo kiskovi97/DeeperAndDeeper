@@ -54,10 +54,10 @@ public class Character : MonoBehaviour
                 GameState.GameOver();
             }
         }
+        if (lightText != null)
+            lightText.text = (int)(LightSource.pointLightOuterRadius * 10) + "";
 
-        lightText.text = (int)(LightSource.pointLightOuterRadius * 10) + "";
-
-
-        scoreText.text = GameState.score.ToString();
+        if (scoreText != null)
+            scoreText.text = GameState.score.ToString();
     }
 }

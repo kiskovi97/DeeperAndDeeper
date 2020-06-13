@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Movement : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
+        if (IsPointerOverUIObject()) return;
         var horizontalPrev = 0f;
         var jumpPrev = false;
 #if UNITY_ANDROID
@@ -136,5 +139,10 @@ public class Movement : MonoBehaviour
         Vector2 horizontalMove = (rb.velocity + new Vector2(horizontal * speed, rb.velocity.y)) / 2;
 
         rb.velocity = horizontalMove;
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        return (EventSystem.current.IsPointerOverGameObject() || EventSystem.current.currentSelectedGameObject != null);
     }
 }
