@@ -21,6 +21,8 @@ public class GameState : MonoBehaviour
     public static float score = 0;
     public static float deltaTime = 0;
 
+    public static bool RotationMovement = false;
+
     public static void AddScore(float addScore)
     {
         score += addScore;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     private new SpriteRenderer renderer;
     private Animator animator;
+
+    public TextMeshProUGUI text;
 
     private bool jump = false;
 
@@ -24,41 +27,60 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
-        var left = false;
-        var right = false;
+        var horizontalPrev = 0f;
+        var jumpPrev = false;
 #if UNITY_ANDROID
-        for (int i = 0; i < Input.touchCount; i++)
+        if (GameState.RotationMovement)
         {
-            var touch = Input.GetTouch(i);
-            var pos = touch.position;
-            if (pos.x > Screen.width / 2)
+            if (Input.touchCount > 0)
             {
-                right = true;
+                jumpPrev = true;
             }
-            else
-            {
-                left = true;
-            }
+            Vector3 tilt = Input.acceleration;
+            horizontalPrev = tilt.x * 4f;
         }
+        else
+        {
+            var left = false;
+            var right = false;
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                var touch = Input.GetTouch(i);
+
+                var pos = touch.position;
+                if (pos.x > Screen.width / 2)
+                {
+                    horizontalPrev += 2;
+                }
+                else
+                {
+                    horizontalPrev += -2;
+                }
+            }
+            jumpPrev = left && right;
+        }
+
 
 #endif
 #if UNITY_EDITOR
-        left |= Input.GetKey(KeyCode.A);
-        right |= Input.GetKey(KeyCode.D);
-#endif
-
-        if (left && !right) horizontal = -2f;
-        else
+        if (Input.GetKey(KeyCode.A))
         {
-            if (!left && right) horizontal = 2f;
-            else
+            horizontalPrev += -2;
+            if (Input.GetKey(KeyCode.D))
             {
-                horizontal *= 0.7f;
-                if (left && right && !OnTheGround())
-                {
-                    jump = true;
-                }
+                jumpPrev = true;
             }
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            horizontalPrev += 2;
+        }
+
+#endif
+        horizontal = horizontalPrev;
+        if (jumpPrev && !OnTheGround())
+        {
+            jump = true;
         }
 
         if (horizontal > 0)
