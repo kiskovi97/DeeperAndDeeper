@@ -5,11 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item For Sale", menuName = "MarketPlace/ItemForSale")]
 public class ItemForSale : ScriptableObject
 {
-    public string name;
+    public bool bought = false;
 
-    public int price;
+    public string Name;
 
-    public Sprite image;
+    public int Price;
 
-    public string desciption;
+    public Sprite Image;
+
+    public string Desciption;
 }

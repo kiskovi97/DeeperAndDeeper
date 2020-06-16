@@ -10,7 +10,7 @@ public class ItemsForSale : MonoBehaviour
 {
     private RectTransform rectTransform;
 
-    public ItemForSale[] itemsForSale;
+    private ItemForSale[] itemsForSale;
 
     public float height = 100;
 
@@ -18,14 +18,33 @@ public class ItemsForSale : MonoBehaviour
 
     private VerticalLayoutGroup verticalLayout;
 
+    private bool changed = false;
+
+    public void SetItemsForSale(ItemForSale[] items)
+    {
+        itemsForSale = items;
+        changed = true;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         verticalLayout = GetComponent<VerticalLayoutGroup>();
         rectTransform = GetComponent<RectTransform>();
+    }
+
+    private void Update()
+    {
+        if (!changed) return;
+        changed = false;
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject, 0.1f);
+        }
+
         var size = rectTransform.sizeDelta;
         size.y = (float)verticalLayout.padding.top;
-        for (int i=0; i< itemsForSale.Length; i++)
+        for (int i = 0; i < itemsForSale.Length; i++)
         {
             var obj = Instantiate(prefab, transform);
             var item = obj.GetComponent<ItemForSaleObject>();

@@ -19,10 +19,10 @@ public class ItemForSaleObject : MonoBehaviour
     {
         if (item == null) return;
 
-        nameText.text = item.name;
-        descriptionText.text = item.desciption;
-        priceText.text = item.price.ToString();
+        nameText.text = item.Name;
+        descriptionText.text = item.Desciption;
+        priceText.text = item.Price.ToString();
 
-        image.sprite = item.image;
+        image.sprite = item.Image;
     }
 }
