@@ -133,10 +133,30 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 750821122219265689, guid: 28a92137f328d72469aaecb6f9992ff3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 750821122219265689, guid: 28a92137f328d72469aaecb6f9992ff3,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 750821122219265689, guid: 28a92137f328d72469aaecb6f9992ff3,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3200550999528100488, guid: 28a92137f328d72469aaecb6f9992ff3,
         type: 3}
       propertyPath: m_Name
       value: PausePrefab Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847518977982283641, guid: 28a92137f328d72469aaecb6f9992ff3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8889784923382687075, guid: 28a92137f328d72469aaecb6f9992ff3,
         type: 3}
@@ -147,6 +167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Save
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889784923901617783, guid: 28a92137f328d72469aaecb6f9992ff3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8889784924649258758, guid: 28a92137f328d72469aaecb6f9992ff3,
         type: 3}
