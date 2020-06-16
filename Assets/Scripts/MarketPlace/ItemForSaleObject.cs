@@ -25,4 +25,9 @@ public class ItemForSaleObject : MonoBehaviour
 
         image.sprite = item.Image;
     }
+
+    public void OnClick()
+    {
+        MarketPlace.Buy(item);
+    }
 }

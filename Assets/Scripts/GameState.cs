@@ -21,6 +21,8 @@ public class GameState : MonoBehaviour
     public static float score = 0;
     public static float deltaTime = 0;
 
+    public static int Currency { get => PlayerPrefs.GetInt("Currency"); set => PlayerPrefs.SetInt("Currency", value); }
+
     public static bool RotationMovement = false;
 
     public static void AddScore(float addScore)
@@ -111,6 +113,8 @@ public class GameState : MonoBehaviour
 
     public static void GameOver()
     {
+        GameState.Currency +=(int)GameState.score;
+        
         LoadGameOver();
     }
 
