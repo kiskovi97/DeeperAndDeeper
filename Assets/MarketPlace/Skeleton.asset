@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61eb750efe78a4d44973ea2dd7772485, type: 3}
   m_Name: Skeleton
   m_EditorClassIdentifier: 
-  bought: 0
+  Id: 1
+  bought: 1
   Name: Skeleton
   Price: 100
   Image: {fileID: 21300000, guid: b83c9ab7db7ae5647984fbfee3988e6d, type: 3}

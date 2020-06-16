@@ -10,6 +10,8 @@ public class MarketPlace : MonoBehaviour
 
     public List<ItemForSale> items;
 
+    public string boughtItems;
+
     private static MarketPlace instance;
 
     public TextMeshProUGUI priceText;
@@ -17,6 +19,16 @@ public class MarketPlace : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        boughtItems = PlayerPrefs.GetString("BoughtItems");
+
+        var list = boughtItems.Split(';').Where((item) => !item.Equals("")).Select((item) => int.Parse(item));
+
+        foreach (var x in list)
+        {
+            var selected = items.Where((item) => item.Id == x).FirstOrDefault();
+            selected.bought = true;
+        }
+
         itemsLayout.SetItemsForSale(items.Where((item) => !item.bought).ToArray());
 
         if (instance == null)
@@ -47,11 +59,35 @@ public class MarketPlace : MonoBehaviour
         if (GameState.Currency < item.Price) return;
 
         GameState.Currency -= item.Price;
-        
+
+        var index = items.IndexOf(item);
+        items[index].bought = true;
+
+        boughtItems += ";" + item.Id;
+
+        UpdateOutput();
+    }
+
+    public void Clear()
+    {
+        boughtItems = "";
+
+        GameState.Currency = 1000;
+
+        foreach (var item in items)
+        {
+            item.bought = false;
+        }
+        UpdateOutput();
+    }
+
+    void UpdateOutput()
+    {
+        PlayerPrefs.SetString("BoughtItems", boughtItems);
+
+        var tmp = items.Where((x) => !x.bought).ToArray();
+        itemsLayout.SetItemsForSale(tmp);
+
         priceText.text = GameState.Currency.ToString();
-
-        items.Remove(item);
-
-        itemsLayout.SetItemsForSale(items.Where((x) => !x.bought).ToArray());
     }
 }
