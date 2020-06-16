@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
                 jumpPrev = true;
             }
             Vector3 tilt = Input.acceleration;
-            horizontalPrev = tilt.x * 4f;
+            horizontalPrev = tilt.x * 7f;
         }
         else
         {
