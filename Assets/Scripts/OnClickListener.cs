@@ -9,7 +9,7 @@ public class OnClickListener : MonoBehaviour
 
     public GameObject Settings;
 
-    public PauseButton button;
+    public PauseButton pauseButton;
 
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class OnClickListener : MonoBehaviour
         {
             Settings.SetActive(false);
             Time.timeScale = timeScale;
-            if (button != null) button.SetPause();
+            if (pauseButton != null) pauseButton.SetPause();
 
         } else
         {
@@ -53,7 +53,7 @@ public class OnClickListener : MonoBehaviour
             Time.timeScale = 0f;
             Settings.SetActive(true);
             Dropdown.value = GameState.RotationMovement ? 1 : 0;
-            if (button != null) button.SetPlay();
+            if (pauseButton != null) pauseButton.SetPlay();
         }
     }
 
