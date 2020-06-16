@@ -32,6 +32,7 @@ public class GameState : MonoBehaviour
     {
         if (instance == null)
         {
+            Screen.sleepTimeout = (int)SleepTimeout.NeverSleep;
             GameObject[] objs = GameObject.FindGameObjectsWithTag("GameState");
 
             if (objs.Length > 1)
