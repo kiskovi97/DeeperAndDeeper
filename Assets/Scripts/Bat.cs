@@ -38,7 +38,7 @@ public class Bat : MonoBehaviour
             Debug.DrawLine(transform.position, hit.point, Color.red);
             var pos = new Vector2(transform.position.x, transform.position.y);
             var distance = (hit.point - pos).magnitude;
-            var correctionNeeded = (2f - distance) * 0.5f;
+            var correctionNeeded = (2f - distance) * 0.6f;
             //transform.Rotate(new Vector3(0, 0, Time.deltaTime * correctionNeeded * 90));
 
             direction = direction.Rotate(Time.deltaTime * correctionNeeded * 90f);

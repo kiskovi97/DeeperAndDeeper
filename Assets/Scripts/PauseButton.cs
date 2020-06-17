@@ -8,11 +8,12 @@ public class PauseButton : MonoBehaviour
     public Sprite play;
     public Sprite pause;
 
-    private Image spriteRenderer;
+    public Image spriteRenderer;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<Image>();
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<Image>();
     }
 
     public void SetPlay()

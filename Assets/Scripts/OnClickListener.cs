@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class OnClickListener : MonoBehaviour
 {
-    public Dropdown Dropdown;
 
     public GameObject Settings;
 
-    public PauseButton button;
+    public PauseButton pauseButton;
 
     private void Awake()
     {
@@ -45,23 +44,14 @@ public class OnClickListener : MonoBehaviour
         {
             Settings.SetActive(false);
             Time.timeScale = timeScale;
-            if (button != null) button.SetPause();
+            if (pauseButton != null) pauseButton.SetPause();
 
         } else
         {
             timeScale = Time.timeScale;
             Time.timeScale = 0f;
             Settings.SetActive(true);
-            Dropdown.value = GameState.RotationMovement ? 1 : 0;
-            if (button != null) button.SetPlay();
+            if (pauseButton != null) pauseButton.SetPlay();
         }
-    }
-
-    public void Save()
-    {
-        var selected = Dropdown.value;
-        GameState.RotationMovement = selected != 0;
-        PlayerPrefs.SetInt("RotationMovement", selected);
-        SetSettings();
     }
 }

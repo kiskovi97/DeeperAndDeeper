@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
@@ -21,6 +17,8 @@ public class GameState : MonoBehaviour
     public static float score = 0;
     public static float deltaTime = 0;
 
+    public static int Currency { get => PlayerPrefs.GetInt("Currency"); set { PlayerPrefs.SetInt("Currency", value); PlayerPrefs.Save();  } }
+
     public static bool RotationMovement = false;
 
     public static void AddScore(float addScore)
@@ -32,6 +30,7 @@ public class GameState : MonoBehaviour
     {
         if (instance == null)
         {
+            Screen.sleepTimeout = (int)SleepTimeout.NeverSleep;
             GameObject[] objs = GameObject.FindGameObjectsWithTag("GameState");
 
             if (objs.Length > 1)
@@ -102,7 +101,6 @@ public class GameState : MonoBehaviour
 
     public static void LoadMenu()
     {
-        Cursor.visible = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene(MenuScene);
         instance.InGame = false;
@@ -110,12 +108,13 @@ public class GameState : MonoBehaviour
 
     public static void GameOver()
     {
+        GameState.Currency +=(int)GameState.score;
+        
         LoadGameOver();
     }
 
     private static void LoadGameOver()
     {
-        Cursor.visible = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(GameOverScene);
         instance.InGame = false;
@@ -123,7 +122,6 @@ public class GameState : MonoBehaviour
 
     public static void LoadTutorial()
     {
-        Cursor.visible = false;
         Time.timeScale = 1f;
         score = 0;
         SceneManager.LoadScene(TutorialScene);
@@ -132,7 +130,6 @@ public class GameState : MonoBehaviour
 
     public static void LoadGame()
     {
-        Cursor.visible = false;
         Time.timeScale = 1f;
         score = 0;
         SceneManager.LoadScene(GameScene);
