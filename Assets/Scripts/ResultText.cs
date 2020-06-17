@@ -7,6 +7,9 @@ public class ResultText : MonoBehaviour
 {
 
     public TextMeshProUGUI scoreText;
+
+    public bool OnlyTop = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,13 @@ public class ResultText : MonoBehaviour
        
         var maxScore = PlayerPrefs.GetFloat("MaxScore");
         var maxTime = PlayerPrefs.GetFloat("MaxTime");
+
+        if (OnlyTop)
+        {
+            scoreText.text = "Top score: " + maxScore.ToString("#0") + " - Top time: " + maxTime.ToString("#0");
+            return;
+        }
+
 
         if (maxTime < GameState.deltaTime)
         {
