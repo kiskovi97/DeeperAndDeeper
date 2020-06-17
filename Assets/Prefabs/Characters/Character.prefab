@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  jumpPower: 3.5
+  jumpPower: 5
   lowPoint: {fileID: 5575117337341204896}
   text: {fileID: 0}
 --- !u!95 &6084955803792331568

@@ -101,7 +101,6 @@ public class GameState : MonoBehaviour
 
     public static void LoadMenu()
     {
-        Cursor.visible = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene(MenuScene);
         instance.InGame = false;
@@ -116,7 +115,6 @@ public class GameState : MonoBehaviour
 
     private static void LoadGameOver()
     {
-        Cursor.visible = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(GameOverScene);
         instance.InGame = false;
@@ -124,7 +122,6 @@ public class GameState : MonoBehaviour
 
     public static void LoadTutorial()
     {
-        Cursor.visible = false;
         Time.timeScale = 1f;
         score = 0;
         SceneManager.LoadScene(TutorialScene);
@@ -133,7 +130,6 @@ public class GameState : MonoBehaviour
 
     public static void LoadGame()
     {
-        Cursor.visible = false;
         Time.timeScale = 1f;
         score = 0;
         SceneManager.LoadScene(GameScene);

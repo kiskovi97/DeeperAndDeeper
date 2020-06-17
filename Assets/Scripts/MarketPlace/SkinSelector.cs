@@ -14,6 +14,12 @@ public class SkinSelector : MonoBehaviour
         ItemsContainer.SelectionChanged += ItemsContainer_SelectionChanged;
     }
 
+    private void OnDestroy()
+    {
+        ItemsContainer.ItemsChanged -= ItemsContainer_ItemsChanged;
+        ItemsContainer.SelectionChanged -= ItemsContainer_SelectionChanged;
+    }
+
     private void ItemsContainer_SelectionChanged()
     {
         skinList.SetSelection(ItemsContainer.SelectedSkinId);

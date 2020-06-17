@@ -5729,7 +5729,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1565193578}
+  generator: {fileID: 0}
   Immortal: 1
+  scoreText: {fileID: 0}
+  bLight: {fileID: 0}
+  lightText: {fileID: 0}
 --- !u!1001 &1260682523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6650,6 +6654,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401738689936763672, guid: e47aaddbd1c2ac94392e83abf46c66d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e47aaddbd1c2ac94392e83abf46c66d4, type: 3}
