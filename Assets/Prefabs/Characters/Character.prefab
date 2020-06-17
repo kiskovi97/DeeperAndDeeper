@@ -132,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6084955803792331569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0123, y: 4.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 6084955803648665941}
@@ -178,6 +178,7 @@ MonoBehaviour:
   bLight: {fileID: 0}
   lightText: {fileID: 0}
   start: 0
+  Immortal: 0
 --- !u!58 &6084955803792331570
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -257,8 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  jumpPower: 3
+  jumpPower: 3.5
   lowPoint: {fileID: 5575117337341204896}
+  text: {fileID: 0}
 --- !u!95 &6084955803792331568
 Animator:
   serializedVersion: 3

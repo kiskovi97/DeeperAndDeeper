@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: DevilSkin
   m_EditorClassIdentifier: 
   Id: 2
-  bought: 0
+  bought: 1
   Name: Devil
   Price: 10
   Image: {fileID: 21300000, guid: af0b34dd1801dfd4f8d72a8d94e9de84, type: 3}
   Desciption: Devil Character Skin
-  characterPrefab: {fileID: 6084955803792331569, guid: a1f21ad0ca16c1e48b5a7a9109fff68d,
+  characterPrefab: {fileID: 1748931375930282067, guid: 0bfcb04e151de11448d03db8107afbef,
     type: 3}

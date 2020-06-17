@@ -60,6 +60,19 @@ public class ItemsContainer : MonoBehaviour
         }
     }
 
+    public static GameObject Character
+    {
+        get
+        {
+            var item = Skins.Where((x) => x.Id == SelectedSkinId).FirstOrDefault();
+            if (item == null)
+            {
+                return instance.defaultSkin.characterPrefab;
+            }
+            return item.characterPrefab;
+        }
+    }
+
     private void Awake()
     {
         if (instance == null)
