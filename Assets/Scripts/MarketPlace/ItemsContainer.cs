@@ -38,7 +38,7 @@ public class ItemsContainer : MonoBehaviour
         }
     }
 
-    public static string BoughtItems { get => PlayerPrefs.GetString("BoughtItems"); set => PlayerPrefs.SetString("BoughtItems", value); }
+    private static string BoughtItems { get => PlayerPrefs.GetString("BoughtItems"); set { PlayerPrefs.SetString("BoughtItems", value); PlayerPrefs.Save(); } }
 
     private static int selectedSkinId = -1;
 
@@ -57,6 +57,7 @@ public class ItemsContainer : MonoBehaviour
         {
             PlayerPrefs.SetInt("SelectedSkinId", value);
             selectedSkinId = value;
+            PlayerPrefs.Save();
         }
     }
 
@@ -112,7 +113,10 @@ public class ItemsContainer : MonoBehaviour
     public void SetBoughtItems()
     {
         var list = BoughtItems.Split(';').Where((item) => !item.Equals("")).Select((item) => int.Parse(item));
-
+        foreach (var x in items)
+        {
+            x.bought = false;
+        }
         foreach (var x in list)
         {
             var selected = items.Where((item) => item.Id == x).FirstOrDefault();

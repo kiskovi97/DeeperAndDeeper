@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DevilSkin
   m_EditorClassIdentifier: 
   Id: 2
-  bought: 1
+  bought: 0
   Name: Devil
   Price: 10
   Image: {fileID: 21300000, guid: af0b34dd1801dfd4f8d72a8d94e9de84, type: 3}

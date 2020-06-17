@@ -62,6 +62,7 @@ public class OnClickListener : MonoBehaviour
         var selected = Dropdown.value;
         GameState.RotationMovement = selected != 0;
         PlayerPrefs.SetInt("RotationMovement", selected);
+        PlayerPrefs.Save();
         SetSettings();
     }
 }

@@ -30,6 +30,7 @@ public class ResultText : MonoBehaviour
 
         PlayerPrefs.SetFloat("MaxScore", maxScore);
         PlayerPrefs.SetFloat("MaxTime", maxTime);
+        PlayerPrefs.Save();
     }
 
 }

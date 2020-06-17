@@ -17,7 +17,7 @@ public class GameState : MonoBehaviour
     public static float score = 0;
     public static float deltaTime = 0;
 
-    public static int Currency { get => PlayerPrefs.GetInt("Currency"); set => PlayerPrefs.SetInt("Currency", value); }
+    public static int Currency { get => PlayerPrefs.GetInt("Currency"); set { PlayerPrefs.SetInt("Currency", value); PlayerPrefs.Save();  } }
 
     public static bool RotationMovement = false;
 
