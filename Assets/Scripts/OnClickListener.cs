@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class OnClickListener : MonoBehaviour
 {
-    public Dropdown Dropdown;
 
     public GameObject Settings;
 
@@ -52,17 +51,7 @@ public class OnClickListener : MonoBehaviour
             timeScale = Time.timeScale;
             Time.timeScale = 0f;
             Settings.SetActive(true);
-            Dropdown.value = GameState.RotationMovement ? 1 : 0;
             if (pauseButton != null) pauseButton.SetPlay();
         }
-    }
-
-    public void Save()
-    {
-        var selected = Dropdown.value;
-        GameState.RotationMovement = selected != 0;
-        PlayerPrefs.SetInt("RotationMovement", selected);
-        PlayerPrefs.Save();
-        SetSettings();
     }
 }

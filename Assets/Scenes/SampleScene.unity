@@ -364,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a97bc8514586b41b40b2195729a179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dropdown: {fileID: 1593573525}
   Settings: {fileID: 1593573523}
   pauseButton: {fileID: 144078713}
 --- !u!1 &330375545
@@ -1414,18 +1413,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5720472645514559879}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1593573525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3764428581992869147, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 5720472645514559879}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1987049832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,36 +1553,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326247514}
     m_Modifications:
-    - target: {fileID: 3764428581566381587, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 326247515}
     - target: {fileID: 3764428582967387254, guid: e47aaddbd1c2ac94392e83abf46c66d4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 326247515}
-    - target: {fileID: 3867325658135346796, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4974296455515557772, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4974296455515557772, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4974296455515557772, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5275492648057567086, guid: e47aaddbd1c2ac94392e83abf46c66d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1705,16 +1667,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PausePrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 7136401922912998301, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401738689936763672, guid: e47aaddbd1c2ac94392e83abf46c66d4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e47aaddbd1c2ac94392e83abf46c66d4, type: 3}
