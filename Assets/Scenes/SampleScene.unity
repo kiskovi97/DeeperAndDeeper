@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1565193578}
+  defaultObj: {fileID: 6084955803792331569, guid: b524632453d0ea4449d0afd6cad67c5d,
+    type: 3}
   generator: {fileID: 1141276914}
   Immortal: 0
   scoreText: {fileID: 357307340}

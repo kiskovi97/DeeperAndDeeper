@@ -65,6 +65,7 @@ public class ItemsContainer : MonoBehaviour
     {
         get
         {
+            if (instance == null) return null;
             var item = Skins.Where((x) => x.Id == SelectedSkinId).FirstOrDefault();
             if (item == null)
             {

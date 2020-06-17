@@ -8,6 +8,8 @@ public class CharacterProxy : MonoBehaviour
 {
     public CinemachineVirtualCamera mainCamera;
 
+    public GameObject defaultObj;
+
     public GridGenerator generator;
 
     public bool Immortal = false;
@@ -19,7 +21,9 @@ public class CharacterProxy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var obj = Instantiate(ItemsContainer.Character);
+        var prefab = ItemsContainer.Character;
+        if (prefab == null) prefab = defaultObj;
+        var obj = Instantiate(prefab);
         obj.transform.position = transform.position;
 
         mainCamera.Follow = obj.transform;
