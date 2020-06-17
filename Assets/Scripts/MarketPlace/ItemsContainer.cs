@@ -29,7 +29,7 @@ public class ItemsContainer : MonoBehaviour
         }
     }
 
-    public static string BoughtItems { get => PlayerPrefs.GetString("BoughtItems"); set => PlayerPrefs.SetString("BoughtItems", value);  }
+    public static string BoughtItems { get => PlayerPrefs.GetString("BoughtItems"); set => PlayerPrefs.SetString("BoughtItems", value); }
 
     private void Awake()
     {
@@ -46,6 +46,7 @@ public class ItemsContainer : MonoBehaviour
             {
                 DontDestroyOnLoad(this.gameObject);
                 instance = this.gameObject.GetComponent<ItemsContainer>();
+                instance.SetBoughtItems();
             }
         }
         else
@@ -71,7 +72,8 @@ public class ItemsContainer : MonoBehaviour
         foreach (var x in list)
         {
             var selected = items.Where((item) => item.Id == x).FirstOrDefault();
-            selected.bought = true;
+            if (selected != null)
+                selected.bought = true;
         }
     }
 
@@ -85,10 +87,6 @@ public class ItemsContainer : MonoBehaviour
 
     void BuyItem(ItemForSale item)
     {
-        if (GameState.Currency < item.Price) return;
-
-        GameState.Currency -= item.Price;
-
         var index = items.IndexOf(item);
         items[index].bought = true;
 

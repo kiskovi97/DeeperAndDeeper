@@ -34,6 +34,10 @@ public class MarketPlace : MonoBehaviour
     {
         if (instance != null)
         {
+            if (GameState.Currency < item.Price) return;
+
+            GameState.Currency -= item.Price;
+
             ItemsContainer.Buy(item);
             instance.UpdateOutput();
         }
