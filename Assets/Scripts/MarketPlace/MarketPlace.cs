@@ -55,7 +55,7 @@ public class MarketPlace : MonoBehaviour
     void UpdateOutput()
     {
         itemsLayout.SetItemsForSale(ItemsContainer.BuyableItems.ToArray());
-        priceText.text = "Currency: " + GameState.Currency.ToString();
+        priceText.text = "Crystals: " + GameState.Currency.ToString();
     }
 
 }
