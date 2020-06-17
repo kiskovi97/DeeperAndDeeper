@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public delegate void ItemsChangedDelegate();
+
 public class ItemsContainer : MonoBehaviour
 {
-    public static ItemsContainer instance;
+    private static ItemsContainer instance;
 
     [SerializeField]
     private List<ItemForSale> items;
@@ -16,6 +17,12 @@ public class ItemsContainer : MonoBehaviour
 
     public static IEnumerable<ItemForSale> BuyableItems => instance.items.Where((x) => !x.bought);
 
+    public static event ItemsChangedDelegate ItemsChanged;
+
+    internal static void SelectSkin()
+    {
+        throw new NotImplementedException();
+    }
 
     public static IEnumerable<CharacterSkin> Skins
     {
@@ -63,6 +70,8 @@ public class ItemsContainer : MonoBehaviour
         }
 
         BoughtItems = "";
+
+        ItemsChanged();
     }
 
     public void SetBoughtItems()
@@ -82,6 +91,7 @@ public class ItemsContainer : MonoBehaviour
         if (instance != null)
         {
             instance.BuyItem(item);
+            ItemsChanged();
         }
     }
 
