@@ -18,10 +18,12 @@ public class ItemsContainer : MonoBehaviour
     public static IEnumerable<ItemForSale> BuyableItems => instance.items.Where((x) => !x.bought);
 
     public static event ItemsChangedDelegate ItemsChanged;
+    public static event ItemsChangedDelegate SelectionChanged;
 
-    internal static void SelectSkin()
+    internal static void SelectSkin(CharacterSkin selected)
     {
-        throw new NotImplementedException();
+        SelectedSkinId = selected.Id;
+        SelectionChanged?.Invoke();
     }
 
     public static IEnumerable<CharacterSkin> Skins
@@ -37,6 +39,26 @@ public class ItemsContainer : MonoBehaviour
     }
 
     public static string BoughtItems { get => PlayerPrefs.GetString("BoughtItems"); set => PlayerPrefs.SetString("BoughtItems", value); }
+
+    private static int selectedSkinId = -1;
+
+    public static int SelectedSkinId
+    {
+        get
+        {
+
+            if (selectedSkinId == -1)
+            {
+                selectedSkinId = PlayerPrefs.GetInt("SelectedSkinId");
+            }
+            return selectedSkinId;
+        }
+        private set
+        {
+            PlayerPrefs.SetInt("SelectedSkinId", value);
+            selectedSkinId = value;
+        }
+    }
 
     private void Awake()
     {
@@ -71,7 +93,7 @@ public class ItemsContainer : MonoBehaviour
 
         BoughtItems = "";
 
-        ItemsChanged();
+        ItemsChanged?.Invoke();
     }
 
     public void SetBoughtItems()
@@ -91,7 +113,7 @@ public class ItemsContainer : MonoBehaviour
         if (instance != null)
         {
             instance.BuyItem(item);
-            ItemsChanged();
+            ItemsChanged?.Invoke();
         }
     }
 

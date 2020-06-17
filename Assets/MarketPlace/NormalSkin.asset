@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706e11d4197fcd243b56431b82e4e7f3, type: 3}
   m_Name: NormalSkin
   m_EditorClassIdentifier: 
-  Id: 4
+  Id: 1
   bought: 1
   Name: Normal
   Price: 0

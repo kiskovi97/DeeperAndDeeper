@@ -9,17 +9,25 @@ public class SkinSelector : MonoBehaviour
 
     private void Awake()
     {
-        skinList.SetItemsForSale(ItemsContainer.Skins.ToArray());
+        skinList.SetItemsForSale(ItemsContainer.Skins.ToArray(), ItemsContainer.SelectedSkinId);
         ItemsContainer.ItemsChanged += ItemsContainer_ItemsChanged;
+        ItemsContainer.SelectionChanged += ItemsContainer_SelectionChanged;
+    }
+
+    private void ItemsContainer_SelectionChanged()
+    {
+        skinList.SetSelection(ItemsContainer.SelectedSkinId);
     }
 
     private void ItemsContainer_ItemsChanged()
     {
-        skinList.SetItemsForSale(ItemsContainer.Skins.ToArray());
+        skinList.SetItemsForSale(ItemsContainer.Skins.ToArray(), ItemsContainer.SelectedSkinId);
     }
 
-    public static void SelectSkin()
+    
+
+    public static void SelectSkin(CharacterSkin skin)
     {
-        ItemsContainer.SelectSkin();
+        ItemsContainer.SelectSkin(skin);
     }
 }

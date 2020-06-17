@@ -9,6 +9,8 @@ public class SkinObject : MonoBehaviour
 
     public Image image;
 
+    public Image selection;
+
     // Start is called before the first frame update
     void Update()
     {
@@ -19,5 +21,15 @@ public class SkinObject : MonoBehaviour
         var rect = GetComponent<RectTransform>();
         
         rect.sizeDelta = new Vector2(rect.rect.height, rect.rect.height);
+    }
+
+    public void SetSelection(bool selected)
+    {
+        selection.enabled = selected;
+    }
+
+    public void Select()
+    {
+        SkinSelector.SelectSkin(skin);
     }
 }
