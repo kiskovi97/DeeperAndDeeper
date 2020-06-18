@@ -458,7 +458,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8729056491689389422}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99968636
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -761,7 +761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &770206894723094002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1123,10 +1123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsLayout: {fileID: 2596365135521065310}
-  items:
-  - {fileID: 11400000, guid: 9d48db2c7fa5ca241a8a0d6b8a91345f, type: 2}
-  - {fileID: 11400000, guid: 1382af961f0413c4c87bc8648ed644d9, type: 2}
-  boughtItems: 
   priceText: {fileID: 7872008713472184629}
 --- !u!1 &6078481366267732237
 GameObject:
@@ -1585,7 +1581,7 @@ PrefabInstance:
     - target: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -172.99997
+      value: -151.5
       objectReference: {fileID: 0}
     - target: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
         type: 3}
