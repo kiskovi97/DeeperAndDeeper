@@ -75,6 +75,20 @@ public class ItemsContainer : MonoBehaviour
         }
     }
 
+    public static Sprite CharacterSprite
+    {
+        get
+        {
+            if (instance == null) return null;
+            var item = Skins.Where((x) => x.Id == SelectedSkinId).FirstOrDefault();
+            if (item == null)
+            {
+                return instance.defaultSkin.Image;
+            }
+            return item.Image;
+        }
+    }
+
     private void Awake()
     {
         if (instance == null)

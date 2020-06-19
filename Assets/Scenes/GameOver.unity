@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -893,6 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 529535388}
+  OnlyTop: 0
 --- !u!1 &577872516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,6 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 972487675}
   - component: {fileID: 972487674}
+  - component: {fileID: 972487676}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1263,6 +1265,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &972487676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972487673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c224fc75193d94e9682b4730bfad6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 972487674}
 --- !u!1 &1301795757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a97bc8514586b41b40b2195729a179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dropdown: {fileID: 0}
   Settings: {fileID: 0}
   pauseButton: {fileID: 0}
 --- !u!1001 &9017130597437005462
