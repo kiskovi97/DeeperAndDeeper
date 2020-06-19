@@ -755,6 +755,7 @@ GameObject:
   - component: {fileID: 1633521534521339307}
   - component: {fileID: 5096007236689122292}
   - component: {fileID: 3905467158289405928}
+  - component: {fileID: 8592491275969844565}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -873,6 +874,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8592491275969844565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5812373778100270011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72dd6504e4692f428413144e8294e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6078481364779744832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,7 +1604,7 @@ PrefabInstance:
     - target: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
         type: 3}
@@ -1625,12 +1638,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ebcd3de222fb2b419d58bee09e59fb5, type: 3}
---- !u!224 &7139211833891412411 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
-    type: 3}
-  m_PrefabInstance: {fileID: 3259254960208538881}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2596365135521065310 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 662899183700264031, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
@@ -1643,3 +1650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7a60fbbadfd10458971743ed8f8b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &7139211833891412411 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3259254960208538881}
+  m_PrefabAsset: {fileID: 0}
