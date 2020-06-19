@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 1812016920094780220, guid: 92a543dedf285bb4389bdbd480ae06fb, type: 3}
   height: 50
   width: 20
+  crystalPerLevel: 6
   texture: {fileID: 0}
   enemyProbability: 0.05
   batteryProbability: 0.01
