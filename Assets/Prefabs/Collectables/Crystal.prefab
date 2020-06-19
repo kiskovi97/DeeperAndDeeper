@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b0c9af18ce03945a5613a69195efda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: f0a26ce75e5121642b0d7d5cdf251d82, type: 3}
+  clip: {fileID: 8300000, guid: 47dac1fce2e43b441b1a2441af7981fe, type: 3}
   explosion: {fileID: 0}
   sprite: {fileID: 0}
   timer: 0

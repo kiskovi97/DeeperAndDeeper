@@ -139,7 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f20053d517ace74c9b7860277090bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: f0a26ce75e5121642b0d7d5cdf251d82, type: 3}
+  clip: {fileID: 8300000, guid: a6efb6e0250bd3b429caa02e5aef0bcd, type: 3}
+  explosion: {fileID: 0}
+  sprite: {fileID: 0}
+  timer: 0
+  isDestroying: 0
 --- !u!61 &4479364583767138016
 BoxCollider2D:
   m_ObjectHideFlags: 0

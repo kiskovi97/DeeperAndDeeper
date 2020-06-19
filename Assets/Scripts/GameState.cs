@@ -7,6 +7,7 @@ public class GameState : MonoBehaviour
     public AudioSource menu;
     public AudioSource game;
     public float soundMix = 2f;
+    public float maxVolume = 0.5f;
     public float deltaTimeQuicker = 1f;
 
     public static int MenuScene = 0;
@@ -68,7 +69,7 @@ public class GameState : MonoBehaviour
             }
             if (game != null)
             {
-                if (game.volume < 1)
+                if (game.volume < maxVolume)
                 {
                     game.volume += Time.deltaTime / soundMix;
                 }
@@ -84,7 +85,7 @@ public class GameState : MonoBehaviour
             }
             if (menu != null)
             {
-                if (menu.volume < 1)
+                if (menu.volume < maxVolume)
                 {
                     menu.volume += Time.deltaTime / soundMix;
                 }
