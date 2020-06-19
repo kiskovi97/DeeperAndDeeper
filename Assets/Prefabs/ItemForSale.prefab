@@ -91,10 +91,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c459e06f02ee9449a310edb152d33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9d48db2c7fa5ca241a8a0d6b8a91345f, type: 2}
+  item: {fileID: 0}
   nameText: {fileID: 7545855422064691949}
   descriptionText: {fileID: 8292776086636749490}
   priceText: {fileID: 311146344575994234}
+  button: {fileID: 6074782302345531006}
   image: {fileID: 8086870555767979078}
 --- !u!1 &2853654126938994141
 GameObject:
