@@ -29,6 +29,18 @@ public class ItemForSaleObject : MonoBehaviour
         button.interactable = item.Price <= GameState.Currency;
     }
 
+    public void UpdateLayout()
+    {
+        if (item == null) return;
+
+        nameText.text = item.Name;
+        descriptionText.text = item.Desciption;
+        priceText.text = item.Price.ToString();
+
+        image.sprite = item.Image;
+        button.interactable = item.Price <= GameState.Currency;
+    }
+
     public void OnClick()
     {
         MarketPlace.Buy(item);

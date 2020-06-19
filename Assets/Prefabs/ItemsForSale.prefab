@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3185874400010641767}
   - component: {fileID: 909242142249806932}
   - component: {fileID: 662899183700264031}
+  - component: {fileID: 5566295477760752957}
   m_Layer: 5
   m_Name: ItemsForSale
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -174.49998}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6751741556087260230
 CanvasRenderer:
@@ -113,11 +114,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7a60fbbadfd10458971743ed8f8b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsForSale:
-  - {fileID: 11400000, guid: 9d48db2c7fa5ca241a8a0d6b8a91345f, type: 2}
-  - {fileID: 11400000, guid: 1382af961f0413c4c87bc8648ed644d9, type: 2}
-  - {fileID: 11400000, guid: 9d48db2c7fa5ca241a8a0d6b8a91345f, type: 2}
-  - {fileID: 11400000, guid: 9d48db2c7fa5ca241a8a0d6b8a91345f, type: 2}
-  - {fileID: 11400000, guid: 1382af961f0413c4c87bc8648ed644d9, type: 2}
   height: 100
   prefab: {fileID: 1786432006500089201, guid: 5441037063381804fbf9897c36bd7214, type: 3}
+--- !u!114 &5566295477760752957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206644184081479133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1

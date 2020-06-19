@@ -4,21 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-[RequireComponent(typeof(VerticalLayoutGroup))]
-[RequireComponent(typeof(RectTransform))]
 public class ItemsForSale : MonoBehaviour
 {
-    private RectTransform rectTransform;
-
     private ItemForSale[] itemsForSale;
 
     public float height = 100;
 
     public GameObject prefab;
 
-    private VerticalLayoutGroup verticalLayout;
-
     private bool changed = false;
+
+    private readonly List<GameObject> objectPool = new List<GameObject>();
 
     public void SetItemsForSale(ItemForSale[] items)
     {
@@ -26,32 +22,32 @@ public class ItemsForSale : MonoBehaviour
         changed = true;
     }
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        verticalLayout = GetComponent<VerticalLayoutGroup>();
-        rectTransform = GetComponent<RectTransform>();
-    }
-
     private void Update()
     {
         if (!changed) return;
         changed = false;
-        foreach (Transform child in transform)
+        while (objectPool.Count > itemsForSale.Length)
         {
-            Destroy(child.gameObject, 0.1f);
+            var obj = objectPool[objectPool.Count - 1];
+            objectPool.RemoveAt(objectPool.Count - 1);
+            Destroy(obj);
         }
 
-        var size = rectTransform.sizeDelta;
-        size.y = (float)verticalLayout.padding.top;
         for (int i = 0; i < itemsForSale.Length; i++)
         {
-            var obj = Instantiate(prefab, transform);
+            GameObject obj;
+            if (i < objectPool.Count)
+            {
+                obj = objectPool[i];
+            } else
+            {
+                obj = Instantiate(prefab, transform);
+                objectPool.Add(obj);
+            }
+
             var item = obj.GetComponent<ItemForSaleObject>();
             item.item = itemsForSale[i];
-            size.y += verticalLayout.spacing + height;
+            item.UpdateLayout();
         }
-        size.y += verticalLayout.padding.bottom - verticalLayout.spacing;
-        rectTransform.sizeDelta = size;
     }
 }

@@ -458,7 +458,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8729056491689389422}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99968636
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -761,7 +761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &770206894723094002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1581,7 +1581,7 @@ PrefabInstance:
     - target: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -151.5
+      value: -159.99998
       objectReference: {fileID: 0}
     - target: {fileID: 5631927566214640826, guid: 5ebcd3de222fb2b419d58bee09e59fb5,
         type: 3}
