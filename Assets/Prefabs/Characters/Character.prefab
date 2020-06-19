@@ -260,6 +260,7 @@ MonoBehaviour:
   speed: 2
   jumpPower: 10
   lowPoint: {fileID: 5575117337341204896}
+  jumpSound: {fileID: 8300000, guid: 604325b96e97d9545aa83b5e474a9b12, type: 3}
   text: {fileID: 0}
 --- !u!95 &6084955803792331568
 Animator:

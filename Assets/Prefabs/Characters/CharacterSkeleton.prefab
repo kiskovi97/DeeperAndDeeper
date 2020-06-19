@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1365748882353079100, guid: b524632453d0ea4449d0afd6cad67c5d,
+        type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 69c6b8dc150533f4c82accd37b0aa753, type: 3}
     - target: {fileID: 5575117337341204896, guid: b524632453d0ea4449d0afd6cad67c5d,
         type: 3}
       propertyPath: m_LocalPosition.y
