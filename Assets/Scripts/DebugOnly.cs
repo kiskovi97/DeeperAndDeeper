@@ -9,7 +9,7 @@ public class DebugOnly : MonoBehaviour
     {
 #if UNITY_EDITOR
 #else
-        if (Debug.isDebugBuild)
+        if (!Debug.isDebugBuild)
         {
             gameObject.SetActive(false);
         }
