@@ -149,6 +149,7 @@ public class Movement : MonoBehaviour
 
     private bool IsPointerOverUIObject()
     {
+        if (EventSystem.current == null) return false;
         return (EventSystem.current.IsPointerOverGameObject() || EventSystem.current.currentSelectedGameObject != null);
     }
 }
