@@ -25,8 +25,6 @@ public class Bat : MonoBehaviour
 
     private Vector3 direction = Vector3.down;
 
-    private float time = 0f;
-
     // Update is called once per frame
     void Update()
     {
@@ -34,5 +32,18 @@ public class Bat : MonoBehaviour
 
         //transform.Rotate(new Vector3(0, 0, Time.deltaTime * 20f));
         transform.position += direction * Time.deltaTime * speed;
+        var hit = Physics2D.Raycast(transform.position, direction, 2f);
+        if (hit.collider != null)
+        {
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+            var pos = new Vector2(transform.position.x, transform.position.y);
+            var distance = (hit.point - pos).magnitude;
+            var correctionNeeded = (2f - distance) * 0.6f;
+            //transform.Rotate(new Vector3(0, 0, Time.deltaTime * correctionNeeded * 90));
+
+            direction = direction.Rotate(Time.deltaTime * correctionNeeded * 90f);
+            transform.position -= direction * Time.deltaTime * speed * correctionNeeded;
+        }
+        Debug.DrawLine(transform.position, transform.position + new Vector3(direction.x, direction.y), Color.green);
     }
 }
