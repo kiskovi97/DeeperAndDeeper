@@ -11,6 +11,7 @@ public class Labyrinth : MonoBehaviour
 
     public int height = 10;
     public int width = 10;
+    public int crystalPerLevel = 10;
 
     public Texture2D texture;
 
@@ -71,13 +72,6 @@ public class Labyrinth : MonoBehaviour
                         var enemyObj = Instantiate(enemy, transform);
                         enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
                     }
-                    else
-                    {
-                        if (Random.value < crystalProbability)
-                        {
-                            GenerateCrystal(new Vector2(i - width / 2, -j));
-                        }
-                    }
                 }
             }
 
@@ -85,6 +79,15 @@ public class Labyrinth : MonoBehaviour
         var battaeryPlace = listOfPlaces[batteryPlaceIndex];
         var batteryObj = Instantiate(battery, transform);
         batteryObj.transform.localPosition = battaeryPlace;
+        listOfPlaces.RemoveAt(batteryPlaceIndex);
+
+        for (int i=0; i< crystalPerLevel && listOfPlaces.Count > 0; i++)
+        {
+            var placeIndex = (int)(listOfPlaces.Count * Random.value);
+            var place = listOfPlaces[placeIndex];
+            GenerateCrystal(place);
+            listOfPlaces.RemoveAt(placeIndex);
+        }
     }
 
     private void GenerateCrystal(Vector2 point)

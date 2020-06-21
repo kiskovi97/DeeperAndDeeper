@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     public float speed = 5f;
     public float jumpPower = 5f;
     public Transform lowPoint;
+    public AudioClip jumpSound;
+    public float volume = 0.5f;
 
     private float horizontal;
     private Rigidbody2D rb;
@@ -133,6 +135,10 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jump = false;
+            if (jumpSound != null)
+            {
+                AudioSource.PlayClipAtPoint(jumpSound, transform.position, volume);
+            }
         }
 
         // Get the velocity
