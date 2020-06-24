@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4364,6 +4364,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254967071433453279, guid: 07e2c961590c9be4c9c8746c3e5d2263,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768877215954287563, guid: 07e2c961590c9be4c9c8746c3e5d2263,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07e2c961590c9be4c9c8746c3e5d2263, type: 3}
