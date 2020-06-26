@@ -177,7 +177,6 @@ MonoBehaviour:
   LightSource: {fileID: 6084955803648665938}
   bLight: {fileID: 0}
   lightText: {fileID: 0}
-  start: 0
   Immortal: 0
 --- !u!58 &6084955803792331570
 CircleCollider2D:
@@ -234,7 +233,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01b6a265d2b3c4949a8d73c6229350a3, type: 3}
+  m_Sprite: {fileID: -2750492391391735869, guid: 1ef404770d9c8ad41a45e17ea1a0bc4a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
   jumpPower: 10
   lowPoint: {fileID: 5575117337341204896}
   jumpSound: {fileID: 8300000, guid: 604325b96e97d9545aa83b5e474a9b12, type: 3}
+  volume: 0.5
   text: {fileID: 0}
 --- !u!95 &6084955803792331568
 Animator:
