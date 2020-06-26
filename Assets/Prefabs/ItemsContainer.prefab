@@ -46,4 +46,5 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: e1ba53e303b9e714684ba38c4495f369, type: 2}
   - {fileID: 11400000, guid: 19f92b52de8c93e4f9bc690b5af9b0e0, type: 2}
+  - {fileID: 11400000, guid: 8aa921b0d89df344aa8249c3f5ca854f, type: 2}
   defaultSkin: {fileID: 11400000, guid: c7ccac3dd3a541e48ba83fe38b94df4c, type: 2}

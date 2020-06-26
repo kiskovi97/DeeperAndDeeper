@@ -30,7 +30,8 @@ public class ItemsContainer : MonoBehaviour
     {
         get
         {
-            if (instance == null) return new List<CharacterSkin> { instance.defaultSkin };
+            if (instance == null) return new List<CharacterSkin>();
+            if (instance.items == null) return new List<CharacterSkin> { instance.defaultSkin };
             return instance.items
                 .Where((item) => item.bought && item is CharacterSkin)
                 .Cast<CharacterSkin>()

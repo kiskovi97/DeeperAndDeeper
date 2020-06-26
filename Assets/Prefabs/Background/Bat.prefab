@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6096332106648144842}
   - component: {fileID: 6096332106648144843}
   - component: {fileID: -8078268464182254020}
-  - component: {fileID: 3208202696501592850}
+  - component: {fileID: -1080550149959025019}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
---- !u!114 &3208202696501592850
+--- !u!114 &-1080550149959025019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 2.63
+  m_PointLightOuterRadius: 1
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5

@@ -45,7 +45,7 @@ public class MarketPlace : MonoBehaviour
 
     public void Clear()
     {
-        GameState.Currency = 1000;
+        GameState.Currency += 1000;
 
         ItemsContainer.Clear();
         

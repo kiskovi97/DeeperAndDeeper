@@ -17,9 +17,14 @@ public class Gate : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            collider.isTrigger = false;
-            renderer.enabled = true;
-            animator.SetTrigger("Shut");
+            var pos = collision.gameObject.transform.position;
+            var me = transform.position;
+            if (pos.y < me.y)
+            {
+                collider.isTrigger = false;
+                renderer.enabled = true;
+                animator.SetTrigger("Shut");
+            }
         }
     }
     // Update is called once per frame

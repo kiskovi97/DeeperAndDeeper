@@ -55,7 +55,7 @@ MonoBehaviour:
   width: 20
   crystalPerLevel: 6
   texture: {fileID: 0}
-  enemyProbability: 0.05
+  enemyProbability: 0.03
   batteryProbability: 0.01
   crystalProbability: 0.02
   PreMade: 0

@@ -22,6 +22,8 @@ public class GameState : MonoBehaviour
 
     public static bool RotationMovement = false;
 
+    private static float start = 0;
+
     public static void AddScore(float addScore)
     {
         score += addScore;
@@ -109,6 +111,7 @@ public class GameState : MonoBehaviour
 
     public static void GameOver()
     {
+        GameState.deltaTime = Time.time - start;
         GameState.Currency +=(int)GameState.score;
         
         LoadGameOver();
@@ -131,6 +134,7 @@ public class GameState : MonoBehaviour
 
     public static void LoadGame()
     {
+        start = Time.time;
         Time.timeScale = 1f;
         score = 0;
         SceneManager.LoadScene(GameScene);
