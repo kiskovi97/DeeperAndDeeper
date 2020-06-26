@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6821171835244778681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6821171835244778676}
+  - component: {fileID: 6821171835244778683}
+  - component: {fileID: 6821171835244778682}
+  m_Layer: 0
+  m_Name: Labyrinth_Ice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6821171835244778676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821171835244778681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6821171835244778683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821171835244778681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583098d2dbdb9a545a82cf50a8f160a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helper: {fileID: 6821171835244778682}
+  enemy: {fileID: 6096332106648144841, guid: 4a292ae2e7b52474fa2f47a66808ca5f, type: 3}
+  battery: {fileID: 1245301451572745015, guid: 07e2c961590c9be4c9c8746c3e5d2263, type: 3}
+  crystals:
+  - {fileID: 1812016920094780220, guid: a26ea29929b49944cae32735081ff424, type: 3}
+  - {fileID: 1812016920094780220, guid: 92a543dedf285bb4389bdbd480ae06fb, type: 3}
+  - {fileID: 1812016920094780220, guid: 92a543dedf285bb4389bdbd480ae06fb, type: 3}
+  height: 50
+  width: 20
+  crystalPerLevel: 6
+  texture: {fileID: 0}
+  enemyProbability: 0.03
+  batteryProbability: 0.01
+  crystalProbability: 0.02
+  PreMade: 0
+--- !u!114 &6821171835244778682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821171835244778681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262e08af069a6d44e80fb2f37c056ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleTile: {fileID: 3461523445125125998, guid: d71d2004eb06fe44bb42be7004a2205d,
+    type: 3}
+  GateTile: {fileID: 3461523445125125998, guid: 4681c21fcd34c374b823a7b736426ac2,
+    type: 3}
+  DarkTile: {fileID: 7125902236762350058, guid: cae46ca68b538564794e71ad4638be58,
+    type: 3}
+  tileUp: {fileID: 8731607875710219490, guid: 4b6fad67cccd0ed4f86a570ac4d3afbe, type: 3}
+  tileRightCorner: {fileID: 5418622078668336534, guid: 942f352746654e540a7207e0ff5c46a6,
+    type: 3}
+  tileRightAlmostFull: {fileID: 8675145561054279720, guid: 3225e945405ebc44cb476b8cd92e826d,
+    type: 3}
+  tileAllAround: {fileID: 902626093209164082, guid: b14eaf5176f963740ac766ded4724f6e,
+    type: 3}
+  tileUpAndDown: {fileID: 8731607875710219490, guid: 9def81218dc42d44f86a006a43d81da9,
+    type: 3}
+  skulls:
+  - {fileID: 8862442230784230273, guid: ee7d6ab0084cfe043ae87f5df850d6cd, type: 3}
+  - {fileID: 2307231035443945151, guid: 59a1f605d29572747840a7269681427d, type: 3}
+  - {fileID: 1976963483181574848, guid: 2d7276418d5d0af41b060ef8771d3c92, type: 3}

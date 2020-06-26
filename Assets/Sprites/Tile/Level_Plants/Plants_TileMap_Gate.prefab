@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 5946890617318609581}
   - component: {fileID: 2253469228828121366}
   m_Layer: 8
-  m_Name: TileMap_Gate
+  m_Name: Plants_TileMap_Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,10 +210,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 724395823
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: c0c7be1795186fc47842e00c91183287, type: 3}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Sprite: {fileID: -3659667698432350057, guid: 3bcd18d760ae5a84487acb2e4d0de619,
+    type: 3}
+  m_Color: {r: 0.8396226, g: 0.2415895, b: 0.2415895, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
