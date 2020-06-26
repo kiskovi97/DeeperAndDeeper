@@ -71,6 +71,12 @@ public class Labyrinth : MonoBehaviour
                     {
                         var enemyObj = Instantiate(enemy, transform);
                         enemyObj.transform.localPosition = new Vector3(i - width / 2, -j);
+
+                        var bat = enemyObj.GetComponent<Bat>();
+                        if (bat != null)
+                        {
+                            bat.MinHeight = -height;
+                        }
                     }
                 }
             }

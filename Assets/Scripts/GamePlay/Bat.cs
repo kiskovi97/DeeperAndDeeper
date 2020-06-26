@@ -25,13 +25,18 @@ public class Bat : MonoBehaviour
 
     private Vector3 direction = Vector3.down;
 
+    public float MinHeight;
+
     // Update is called once per frame
     void Update()
     {
         direction = direction.Rotate(Time.deltaTime * 20f);
 
-        //transform.Rotate(new Vector3(0, 0, Time.deltaTime * 20f));
         transform.position += direction * Time.deltaTime * speed;
+        if (transform.localPosition.y < MinHeight)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, MinHeight);
+        }
         var hit = Physics2D.Raycast(transform.position, direction, 2f);
         if (hit.collider != null)
         {
