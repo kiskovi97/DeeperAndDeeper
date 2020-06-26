@@ -32,6 +32,12 @@ public class FPSDisplayScript : MonoBehaviour
     }
     void OnGUI()
     {
-        GUI.Label(new Rect(5, 5, 30, 30), "" + lastFPS, textStyle);
+#if UNITY_EDITOR
+#else
+        if (Debug.isDebugBuild)
+        {
+             GUI.Label(new Rect(5, 5, 30, 30), "" + lastFPS, textStyle);
+        }
+#endif
     }
 }
