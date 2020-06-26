@@ -26,7 +26,7 @@ public class OnClickListener : MonoBehaviour
         GameState.LoadMenu();
     }
 
-    private void LoadGameOver()
+    public void LoadGameOver()
     {
         GameState.GameOver();
     }

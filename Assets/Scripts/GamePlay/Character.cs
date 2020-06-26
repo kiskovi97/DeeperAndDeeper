@@ -12,7 +12,6 @@ public class Character : MonoBehaviour
     public UnityEngine.Experimental.Rendering.Universal.Light2D LightSource;
     public BackgroundLight bLight;
     public TextMeshProUGUI lightText;
-    public float start;
 
     public bool Immortal = false;
 
@@ -26,7 +25,6 @@ public class Character : MonoBehaviour
     {
         startRadius = LightSource.pointLightInnerRadius;
         startOutRadius = LightSource.pointLightOuterRadius;
-        start = Time.time;
     }
 
     public void BatteryCharge()
@@ -50,7 +48,6 @@ public class Character : MonoBehaviour
             }
             else
             {
-                GameState.deltaTime = Time.time - start;
                 GameState.GameOver();
             }
         }
