@@ -60,6 +60,7 @@ MonoBehaviour:
   enemyProbability: 0.03
   batteryProbability: 0.01
   crystalProbability: 0.02
+  clip: {fileID: 8300000, guid: f2a74482d88257845853999afd836fd9, type: 3}
   PreMade: 0
 --- !u!114 &6821171835244778682
 MonoBehaviour:
