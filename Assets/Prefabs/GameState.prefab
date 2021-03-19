@@ -137,7 +137,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9017130597274481223}
   - component: {fileID: 9017130597274481222}
-  - component: {fileID: 9017130597274481221}
   - component: {fileID: 334120297073904897}
   m_Layer: 0
   m_Name: GameState
@@ -179,18 +178,6 @@ MonoBehaviour:
   soundMix: 2
   maxVolume: 0.2
   deltaTimeQuicker: 1
---- !u!114 &9017130597274481221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9017130597274481241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b8f178aed091c43895e3004334a610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &334120297073904897
 MonoBehaviour:
   m_ObjectHideFlags: 0
