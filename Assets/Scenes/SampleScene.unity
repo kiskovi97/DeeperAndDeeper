@@ -1139,6 +1139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labyrinths:
   - {fileID: 6821171835244778681, guid: db1e8e3b9eef8f646b18deeaf8b2a340, type: 3}
+  - {fileID: 6821171835244778681, guid: f8750427996938c45be1d13c8f8950ce, type: 3}
+  - {fileID: 6821171835244778681, guid: 88e1faf1f88e5e944bd515b814d15514, type: 3}
   player: {fileID: 0}
 --- !u!1 &1388263228
 GameObject:

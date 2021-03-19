@@ -19,6 +19,7 @@ public class Labyrinth : MonoBehaviour
     public float enemyProbability = 0.05f;
     public float batteryProbability = 0.01f;
     public float crystalProbability = 0.05f;
+    public AudioClip clip;
 
     public bool PreMade = false;
 
@@ -65,6 +66,12 @@ public class Labyrinth : MonoBehaviour
                 else
                 {
                     var obj = j == 0 ? helper.GetGate() : helper.GetSimple();
+
+                    var gate = obj.GetComponentInChildren<Gate>();
+                    if (gate != null)
+                        gate.labyrinth = this;
+
+
                     obj.transform.localPosition = new Vector3(i - width / 2, -j);
                     listOfPlaces.Add(new Vector3(i - width / 2, -j));
                     if (Random.value < enemyProbability)
@@ -87,7 +94,7 @@ public class Labyrinth : MonoBehaviour
         batteryObj.transform.localPosition = battaeryPlace;
         listOfPlaces.RemoveAt(batteryPlaceIndex);
 
-        for (int i=0; i< crystalPerLevel && listOfPlaces.Count > 0; i++)
+        for (int i = 0; i < crystalPerLevel && listOfPlaces.Count > 0; i++)
         {
             var placeIndex = (int)(listOfPlaces.Count * Random.value);
             var place = listOfPlaces[placeIndex];

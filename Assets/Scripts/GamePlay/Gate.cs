@@ -7,6 +7,8 @@ public class Gate : MonoBehaviour
     new Collider2D collider;
     new SpriteRenderer renderer;
     Animator animator;
+    public Labyrinth labyrinth;
+
     private void Start()
     {
         collider = GetComponent<Collider2D>();
@@ -24,6 +26,10 @@ public class Gate : MonoBehaviour
                 collider.isTrigger = false;
                 renderer.enabled = true;
                 animator.SetTrigger("Shut");
+                var time = GameState.instance.game.time;
+                GameState.instance.game.clip = labyrinth.clip;
+                GameState.instance.game.Play();
+                GameState.instance.game.time = time;
             }
         }
     }
