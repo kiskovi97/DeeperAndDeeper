@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 9017130597274481223}
   - component: {fileID: 9017130597274481222}
   - component: {fileID: 334120297073904897}
+  - component: {fileID: 7582816131482063265}
   m_Layer: 0
   m_Name: GameState
   m_TagString: GameState
@@ -259,6 +260,21 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+--- !u!114 &7582816131482063265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017130597274481241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec6d630ee4b27143a3a2c7627b89ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidGameId: 4706213
+  _iOSGameId: 4706212
+  _testMode: 0
 --- !u!1 &9017130597301003781
 GameObject:
   m_ObjectHideFlags: 0
