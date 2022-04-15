@@ -42,7 +42,8 @@ namespace DeeperAndDeeper.Main
         {
             if (Instance != null)
             {
-                OnFinishedListeners.Add(OnFinished);
+                if (OnFinished != null)
+                    OnFinishedListeners.Add(OnFinished);
                 Instance.LoadAd();
             }
         }
