@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DeeperAndDeeper.Main;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
@@ -113,8 +114,8 @@ public class GameState : MonoBehaviour
     {
         GameState.deltaTime = Time.time - start;
         GameState.Currency +=(int)GameState.score;
-        
-        LoadGameOver();
+
+        AdsShower.LoadAd((_) => LoadGameOver());
     }
 
     private static void LoadGameOver()

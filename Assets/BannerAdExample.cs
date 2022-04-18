@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
-using DeeperAndDeeper.Main;
 
 public class BannerAdExample : MonoBehaviour
 {
@@ -50,6 +49,10 @@ public class BannerAdExample : MonoBehaviour
             // Load the Ad Unit with banner content:
             Advertisement.Banner.Load(_adUnitId, options);
         }
+        else
+        {
+            ShowBannerAd();
+        }
     }
 
     // Implement code to execute when the loadCallback event triggers:
@@ -63,7 +66,6 @@ public class BannerAdExample : MonoBehaviour
     void OnBannerError(string message)
     {
         Debug.Log($"Banner Error: {message}");
-        AdsShower.LoadAd(null);
         // Optionally execute additional code, such as attempting to load another ad.
     }
 
@@ -96,6 +98,6 @@ public class BannerAdExample : MonoBehaviour
     void OnDestroy()
     {
         // Clean up the listeners:
-        HideBannerAd();
+        Advertisement.Banner.Hide(true);
     }
 }
