@@ -115,7 +115,7 @@ public class GameState : MonoBehaviour
         GameState.deltaTime = Time.time - start;
         GameState.Currency +=(int)GameState.score;
 
-        AdsShower.LoadAd((_) => LoadGameOver());
+        LoadGameOver();
     }
 
     private static void LoadGameOver()
