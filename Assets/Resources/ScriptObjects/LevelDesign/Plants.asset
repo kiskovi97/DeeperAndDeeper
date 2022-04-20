@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e2c0694dd65aa439c3c63f095d4831, type: 3}
+  m_Name: Plants
+  m_EditorClassIdentifier: 
+  Id: 52
+  bought: 0
+  Name: Plant Level
+  Price: 500
+  Image: {fileID: 21300000, guid: e0b94196607f4584fb2bda7f9f8a3e42, type: 3}
+  Desciption: You wandered into the jungle. Get to the bottom of it.
+  labyrinths:
+  - {fileID: 6821171835244778681, guid: 88e1faf1f88e5e944bd515b814d15514, type: 3}

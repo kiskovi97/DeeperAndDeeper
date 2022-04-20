@@ -30,7 +30,8 @@ namespace DeeperAndDeeper.Main
             if (Instance == this)
             {
                 Instance = null;
-                bannerView.Destroy();
+                if (bannerView != null)
+                    bannerView.Destroy();
             }
         }
 
@@ -55,6 +56,7 @@ namespace DeeperAndDeeper.Main
             string adUnitId = "unexpected_platform";
 #endif
 
+#if !UNITY_EDITOR
             // Create a 320x50 banner at the top of the screen.
             this.bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
             // Called when an ad request has successfully loaded.
@@ -71,6 +73,7 @@ namespace DeeperAndDeeper.Main
 
             // Load the banner with the request.
             this.bannerView.LoadAd(request);
+#endif
 
         }
 

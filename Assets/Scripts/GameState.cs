@@ -15,6 +15,7 @@ public class GameState : MonoBehaviour
     public static int GameScene = 1;
     public static int GameOverScene = 2;
     public static int TutorialScene = 3;
+    public static int LevelSelector = 4;
 
     public static float score = 0;
     public static float deltaTime = 0;
@@ -123,6 +124,14 @@ public class GameState : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(GameOverScene);
         instance.InGame = false;
+    }
+
+    public static void LoadLevelSelector()
+    {
+        Time.timeScale = 1f;
+        score = 0;
+        SceneManager.LoadScene(LevelSelector);
+        instance.InGame = true;
     }
 
     public static void LoadTutorial()

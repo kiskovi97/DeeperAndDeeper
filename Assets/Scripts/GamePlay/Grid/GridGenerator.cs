@@ -1,11 +1,10 @@
 ﻿using Assets.Scripts;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
-    public GameObject[] labyrinths;
+    private static GameObject[] labyrinths;
     
     public Queue<GameObject> labs = new Queue<GameObject>();
 
@@ -13,6 +12,11 @@ public class GridGenerator : MonoBehaviour
 
     private float prevHeight = 0;
     private int entryPoint = -1;
+
+    public static void SetLevelDesigns(LevelDesign levelDesign)
+    {
+        labyrinths = levelDesign.labyrinths;
+    }
 
     // Start is called before the first frame update
     void Start()

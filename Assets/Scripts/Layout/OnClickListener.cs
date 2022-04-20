@@ -33,7 +33,7 @@ public class OnClickListener : MonoBehaviour
 
     public void LoadGame()
     {
-        GameState.LoadTutorial();
+        GameState.LoadLevelSelector();
     }
 
     private float timeScale = 1f;
