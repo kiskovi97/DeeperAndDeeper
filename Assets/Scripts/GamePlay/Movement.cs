@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-using TMPro;
+﻿using TMPro;
 
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -45,33 +43,44 @@ public class Movement : MonoBehaviour
 #if UNITY_ANDROID
         if (GameState.RotationMovement)
         {
-            if (Input.touchCount > 0)
+            // Touch = jump
+            if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
             {
                 jumpPrev = true;
             }
-            Vector3 tilt = Input.acceleration;
-            horizontalPrev = tilt.x * 7f;
+
+            // Accelerometer = horizontal
+            if (Accelerometer.current != null)
+            {
+                Vector3 tilt = Accelerometer.current.acceleration.ReadValue();
+                horizontalPrev = tilt.x * 7f;
+            }
         }
         else
         {
-            var left = false;
-            var right = false;
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                var touch = Input.GetTouch(i);
+            bool left = false;
+            bool right = false;
 
-                var pos = touch.position;
-                if (pos.x > Screen.width / 2)
+            if (Touchscreen.current != null)
+            {
+                foreach (var touch in Touchscreen.current.touches)
                 {
-                    right = true;
-                    horizontalPrev += 2;
-                }
-                else
-                {
-                    left = true;
-                    horizontalPrev += -2;
+                    if (!touch.press.isPressed) continue;
+
+                    Vector2 pos = touch.position.ReadValue();
+                    if (pos.x > Screen.width / 2)
+                    {
+                        right = true;
+                        horizontalPrev += 2f;
+                    }
+                    else
+                    {
+                        left = true;
+                        horizontalPrev -= 2f;
+                    }
                 }
             }
+
             jumpPrev = left && right;
         }
 
