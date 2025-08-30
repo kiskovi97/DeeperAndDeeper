@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using GoogleMobileAds.Api;
 
 namespace DeeperAndDeeper.Main
 {
     public class AdsInitializer : MonoBehaviour
     {
-        private BannerView bannerView;
-
         private static AdsInitializer Instance { get; set; }
 
         void Awake()
@@ -30,20 +27,11 @@ namespace DeeperAndDeeper.Main
             if (Instance == this)
             {
                 Instance = null;
-                if (bannerView != null)
-                    bannerView.Destroy();
             }
         }
 
         public void InitializeAds()
         {
-            MobileAds.Initialize(OnInitializationComplete);
-        }
-
-        private void OnInitializationComplete(InitializationStatus obj)
-        {
-            Debug.Log("Unity Ads initialization complete.");
-            this.RequestBanner();
         }
 
         private void RequestBanner()
@@ -75,27 +63,6 @@ namespace DeeperAndDeeper.Main
             this.bannerView.LoadAd(request);
 #endif
 
-        }
-
-        public void HandleOnAdLoaded(object sender, EventArgs args)
-        {
-            MonoBehaviour.print("HandleAdLoaded event received");
-        }
-
-        public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-        {
-            MonoBehaviour.print("HandleFailedToReceiveAd event received with message: "
-                                + args.LoadAdError);
-        }
-
-        public void HandleOnAdOpened(object sender, EventArgs args)
-        {
-            MonoBehaviour.print("HandleAdOpened event received");
-        }
-
-        public void HandleOnAdClosed(object sender, EventArgs args)
-        {
-            MonoBehaviour.print("HandleAdClosed event received");
         }
     }
 }

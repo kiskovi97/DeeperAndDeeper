@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class Movement : MonoBehaviour
     public Transform lowPoint;
     public AudioClip jumpSound;
     public float volume = 0.5f;
+    public InputActionReference leftInput;
+    public InputActionReference rightInput;
 
     private float horizontal;
     private Rigidbody2D rb;
@@ -28,6 +33,9 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        leftInput.action.Enable();
+        rightInput.action.Enable();
     }
     private void Update()
     {
@@ -70,15 +78,15 @@ public class Movement : MonoBehaviour
 
 #endif
 #if UNITY_EDITOR
-        if (Input.GetKey(KeyCode.A))
+        if (leftInput.action.IsPressed())
         {
             horizontalPrev += -2;
-            if (Input.GetKey(KeyCode.D))
+            if (rightInput.action.IsPressed())
             {
                 jumpPrev = true;
             }
         }
-        if (Input.GetKey(KeyCode.D))
+        if (rightInput.action.IsPressed())
         {
             horizontalPrev += 2;
         }
@@ -142,9 +150,9 @@ public class Movement : MonoBehaviour
         }
 
         // Get the velocity
-        Vector2 horizontalMove = (rb.velocity + new Vector2(horizontal * speed, rb.velocity.y)) / 2;
+        Vector2 horizontalMove = (rb.linearVelocity + new Vector2(horizontal * speed, rb.linearVelocity.y)) / 2;
 
-        rb.velocity = horizontalMove;
+        rb.linearVelocity = horizontalMove;
     }
 
     private bool IsPointerOverUIObject()

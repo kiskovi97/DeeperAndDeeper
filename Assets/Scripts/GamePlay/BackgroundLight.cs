@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BackgroundLight : MonoBehaviour
 {
-    private UnityEngine.Experimental.Rendering.Universal.Light2D OutSideLightSource;
+    private UnityEngine.Rendering.Universal.Light2D OutSideLightSource;
 
     float prevLight;
 
     // Start is called before the first frame update
     void Start()
     {
-        OutSideLightSource = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
+        OutSideLightSource = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         prevLight = OutSideLightSource.intensity;
     }
     

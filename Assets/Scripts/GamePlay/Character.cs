@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     private float startOutRadius;
     public TextMeshProUGUI scoreText;
 
-    public UnityEngine.Experimental.Rendering.Universal.Light2D LightSource;
+    public UnityEngine.Rendering.Universal.Light2D LightSource;
     public BackgroundLight bLight;
     public TextMeshProUGUI lightText;
 

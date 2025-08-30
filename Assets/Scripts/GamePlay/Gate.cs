@@ -26,6 +26,8 @@ public class Gate : MonoBehaviour
                 collider.isTrigger = false;
                 renderer.enabled = true;
                 animator.SetTrigger("Shut");
+                if (GameState.instance == null || GameState.instance.game == null)
+                    return;
                 var time = GameState.instance.game.time;
                 GameState.instance.game.clip = labyrinth.clip;
                 GameState.instance.game.Play();

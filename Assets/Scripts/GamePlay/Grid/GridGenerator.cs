@@ -9,6 +9,7 @@ public class GridGenerator : MonoBehaviour
     public Queue<GameObject> labs = new Queue<GameObject>();
 
     public GameObject player;
+    public LevelDesign levelDesign;
 
     private float prevHeight = 0;
     private int entryPoint = -1;
@@ -40,6 +41,10 @@ public class GridGenerator : MonoBehaviour
 
     void NewGrid()
     {
+        if (labyrinths == null || labyrinths.Length == 0)
+        {
+            SetLevelDesigns(levelDesign);
+        }
         int index = (int)(Random.value * labyrinths.Length);
         var obj = Instantiate(labyrinths[index], transform);
 

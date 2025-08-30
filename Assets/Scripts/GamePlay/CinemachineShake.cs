@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
+using Unity.Cinemachine;
+
 using UnityEngine;
-using Cinemachine;
 
 public class CinemachineShake : MonoBehaviour
 {
-    private CinemachineVirtualCamera virtualCamera;
+    public CinemachineBasicMultiChannelPerlin perlin;
 
     private float timer;
     private float maxTime;
@@ -15,8 +17,6 @@ public class CinemachineShake : MonoBehaviour
 
     private void Awake()
     {
-        virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        
         instance = this;
     }
 
@@ -24,8 +24,8 @@ public class CinemachineShake : MonoBehaviour
     {
         if (instance != null)
         {
-            var perlin = instance.virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-            perlin.m_AmplitudeGain = intensity;
+            var perlin = instance.perlin;
+            perlin.AmplitudeGain = intensity;
             instance.timer = time;
             instance.maxTime = time;
             instance.maxShake = intensity;
@@ -34,15 +34,14 @@ public class CinemachineShake : MonoBehaviour
 
     private void Update()
     {
-        var perlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         if (timer > 0)
         {
             timer -= Time.deltaTime;
-            
-            //perlin.m_AmplitudeGain = Mathf.Lerp(maxShake, 0f, timer / maxTime);
-        } else
+        }
+        else
         {
-            perlin.m_AmplitudeGain = 0f;
+            var perlin = instance.perlin;
+            perlin.AmplitudeGain = 0f;
         }
     }
 }

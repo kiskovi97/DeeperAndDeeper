@@ -1,5 +1,6 @@
 ﻿using DeeperAndDeeper.Main;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
@@ -7,6 +8,7 @@ public class GameState : MonoBehaviour
     public static GameState instance;
     public AudioSource menu;
     public AudioSource game;
+    public InputActionReference escapeInout;
     public float soundMix = 2f;
     public float maxVolume = 0.5f;
     public float deltaTimeQuicker = 1f;
@@ -44,6 +46,7 @@ public class GameState : MonoBehaviour
             }
             else
             {
+                escapeInout.action.Enable();
                 DontDestroyOnLoad(this.gameObject);
                 instance = this.gameObject.GetComponent<GameState>();
             }
@@ -58,7 +61,7 @@ public class GameState : MonoBehaviour
     private void Update()
     {
         Time.timeScale += 0.001f * deltaTimeQuicker * Time.deltaTime;
-        if (Input.GetKey(KeyCode.Escape))
+        if (escapeInout.action.WasPerformedThisFrame())
         {
             Quit();
         }
