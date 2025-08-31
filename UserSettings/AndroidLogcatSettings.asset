@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "d1c199aa",
         "name": "com.igorodcavok.deeperanddeeper",
-        "processId": 22186,
+        "processId": 27071,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -72,6 +72,18 @@
             "deviceId": "d1c199aa",
             "name": "com.igorodcavok.deeperanddeeper",
             "processId": 22186,
+            "exited": false
+        },
+        {
+            "deviceId": "d1c199aa",
+            "name": "com.igorodcavok.deeperanddeeper",
+            "processId": 24036,
+            "exited": false
+        },
+        {
+            "deviceId": "d1c199aa",
+            "name": "com.igorodcavok.deeperanddeeper",
+            "processId": 27071,
             "exited": false
         }
     ],
