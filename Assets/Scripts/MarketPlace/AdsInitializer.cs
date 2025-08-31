@@ -1,13 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using Unity.Services.LevelPlay;
+using System;
+using System.Threading.Tasks;
 
 namespace DeeperAndDeeper.Main
 {
     public class AdsInitializer : MonoBehaviour
     {
+        private LevelPlayBannerAd bannerAd;
+        private string bannerAdUnitId = "uil7i9ojcmriqp8t";
+        private string interstitialAdUnitId = "9rynyk8l7gt87p3s";
+        private string rewardedAdUnitId = "o9a0xets0gro3it2";
+        private LevelPlayInterstitialAd interstitialAd;
+        private LevelPlayRewardedAd rewardedAd;
+        private static TaskCompletionSource<bool> rewardTaskSource;
+
         private static AdsInitializer Instance { get; set; }
 
         void Awake()
@@ -36,8 +44,38 @@ namespace DeeperAndDeeper.Main
         {
             LevelPlay.OnInitSuccess += SdkInitializationCompletedEvent;
             LevelPlay.OnInitFailed += SdkInitializationFailedEvent;
-            // SDK init
-            //LevelPlay.Init("2369d95ed");
+
+            Debug.Log("---------- ValidateIntegration ------------");
+            if (Debug.isDebugBuild)
+            {
+                LevelPlay.SetMetaData("is_test_suite", "enable");
+            }
+            LevelPlay.ValidateIntegration();
+            Debug.Log("---------- ValidateIntegration End ------------");
+            LevelPlay.Init("2369d95ed");
+        }
+
+        public static Task<bool> LoadRewardAd()
+        {
+            rewardTaskSource = new TaskCompletionSource<bool>();
+
+            Instance.rewardedAd.LoadAd();
+
+            return rewardTaskSource.Task;
+        }
+
+        private static void RewardedAd_OnAdClosed(com.unity3d.mediation.LevelPlayAdInfo obj)
+        {
+            if (!rewardTaskSource.Task.IsCompleted)
+            {
+                Debug.Log("Ad closed without reward.");
+                rewardTaskSource?.TrySetResult(false);
+            }
+        }
+
+        private static void RewardedAd_OnAdRewarded(com.unity3d.mediation.LevelPlayAdInfo arg1, com.unity3d.mediation.LevelPlayReward arg2)
+        {
+            rewardTaskSource?.TrySetResult(true);
         }
 
         private void SdkInitializationFailedEvent(com.unity3d.mediation.LevelPlayInitError error)
@@ -47,7 +85,75 @@ namespace DeeperAndDeeper.Main
 
         private void SdkInitializationCompletedEvent(com.unity3d.mediation.LevelPlayConfiguration configuration)
         {
-            Debug.LogError("SdkInitializationCompletedEvent");
+            Debug.Log("SdkInitializationCompletedEvent");
+
+            if (Debug.isDebugBuild)
+            {
+                LevelPlay.LaunchTestSuite();
+            }
+
+            var config = new LevelPlayBannerAd.Config.Builder()
+                .SetPosition(com.unity3d.mediation.LevelPlayBannerPosition.TopCenter)
+                .SetSize(com.unity3d.mediation.LevelPlayAdSize.BANNER);
+
+            bannerAd = new LevelPlayBannerAd(bannerAdUnitId, config.Build());
+
+            bannerAd.OnAdLoaded += BannerAd_OnAdLoaded;
+            bannerAd.OnAdLoadFailed += BannerAd_OnAdLoadFailed;
+
+            bannerAd.LoadAd();
+
+            interstitialAd = new LevelPlayInterstitialAd(interstitialAdUnitId);
+
+            interstitialAd.OnAdLoaded += InterstitialAd_OnAdLoaded;
+            interstitialAd.OnAdLoadFailed += InterstitialAd_OnAdLoadFailed;
+
+            rewardedAd = new LevelPlayRewardedAd(rewardedAdUnitId);
+
+            rewardedAd.OnAdLoaded += RewardedAd_OnAdLoaded;
+            rewardedAd.OnAdLoadFailed += RewardedAd_OnAdLoadFailed;
+            rewardedAd.OnAdRewarded += RewardedAd_OnAdRewarded;
+            rewardedAd.OnAdClosed += RewardedAd_OnAdClosed;
+        }
+
+        private void RewardedAd_OnAdLoadFailed(com.unity3d.mediation.LevelPlayAdError obj)
+        {
+            Debug.LogError("RewardedAd_OnAdLoadFailed: " + obj.ErrorMessage);
+            rewardTaskSource?.TrySetResult(false);
+        }
+        private void InterstitialAd_OnAdLoadFailed(com.unity3d.mediation.LevelPlayAdError obj)
+        {
+            Debug.LogError("InterstitialAd_OnAdLoadFailed: " + obj.ErrorMessage);
+        }
+
+        private void BannerAd_OnAdLoadFailed(com.unity3d.mediation.LevelPlayAdError obj)
+        {
+            Debug.LogError("BannerAd_OnAdLoadFailed: " + obj.ErrorMessage);
+            Invoke(nameof(ReloadBanner), 10f);
+        }
+
+        private void RewardedAd_OnAdLoaded(com.unity3d.mediation.LevelPlayAdInfo obj)
+        {
+            rewardedAd.ShowAd();
+            Debug.Log("RewardedAd_OnAdLoaded");
+        }
+
+        private void InterstitialAd_OnAdLoaded(com.unity3d.mediation.LevelPlayAdInfo obj)
+        {
+            interstitialAd.ShowAd();
+            Debug.Log("InterstitialAd_OnAdLoaded");
+        }
+
+        private void BannerAd_OnAdLoaded(com.unity3d.mediation.LevelPlayAdInfo obj)
+        {
+            Debug.Log("BannerAd_OnAdLoaded");
+            bannerAd.ShowAd();
+        }
+
+        private void ReloadBanner()
+        {
+            if (bannerAd != null)
+                bannerAd.LoadAd();
         }
     }
 }

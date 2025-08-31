@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 
-public class BannerAdExample : MonoBehaviour
+public class BannerAd : MonoBehaviour
 {
     
 }

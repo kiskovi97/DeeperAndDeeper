@@ -1,4 +1,7 @@
 ﻿using System;
+
+using DeeperAndDeeper.Main;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +18,8 @@ public class Character : MonoBehaviour
 
     public bool Immortal = false;
 
+    public static Character instance;
+
     public void StartLight()
     {
         bLight.StartTimer();
@@ -23,6 +28,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         startRadius = LightSource.pointLightInnerRadius;
         startOutRadius = LightSource.pointLightOuterRadius;
     }
@@ -48,7 +54,8 @@ public class Character : MonoBehaviour
             }
             else
             {
-                GameState.GameOver();
+                ContinueWindow.ShowWindow();
+                //TryReload();
             }
         }
         if (lightText != null)
@@ -56,5 +63,19 @@ public class Character : MonoBehaviour
 
         if (scoreText != null)
             scoreText.text = GameState.score.ToString();
+    }
+
+    private async void TryReload()
+    {
+        Time.timeScale = 0f;
+        var ok = await AdsInitializer.LoadRewardAd();
+        Time.timeScale = 1f;
+        if (ok)
+        {
+            BatteryCharge();
+        } else
+        {
+            GameState.GameOver();
+        }
     }
 }
